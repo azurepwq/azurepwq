@@ -4,6 +4,8 @@
 - 💞️ I’m looking to collaborate on some open-source projects.
 
 <img src="https://github.com/azurepx/azurepx/assets/153528619/8f2d8356-5b1d-4ea5-b2ee-79811259d602" width=30%>
+<img src="https://github.com/azurepx/azurepx/assets/153528619/52424e0e-69a8-42cb-bebf-a10a31483291" width=30%>
+
 
 <!---
 azurepx/azurepx is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
