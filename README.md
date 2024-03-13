@@ -1,7 +1,5 @@
-- 👋 Hi, I’m a JavaScript/TypeScript software engineer.
-- 👀 I’m interested in web development techniques.
-- 🌱 I’m currently learning some basic maths and Rust.
-- 💞️ I’m looking to collaborate on some open-source projects.
+- 👩🏻‍💻 Hi, I’m a JavaScript/TypeScript software engineer.
+- 🏳️‍⚧️ I’m currently learning some basic maths and Rust.
 
 
 Feel free to reach out to me using any of the methods listed below. 
