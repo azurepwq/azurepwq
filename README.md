@@ -1,7 +1,6 @@
 - 👩🏻‍💻 Hi, I’m a JavaScript/TypeScript software engineer.
 - 🏳️‍⚧️ I’m currently learning some basic maths and Rust.
 
-
 Feel free to reach out to me using any of the methods listed below. 
 
 I'm here to help and answer any questions you may have.
