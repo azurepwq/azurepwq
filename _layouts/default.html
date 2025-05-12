@@ -41,8 +41,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   
   <title>{{ page.title | default: site.title }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
+  <link rel="stylesheet" href="{% include asset_path.html path='/assets/css/style.css' %}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{% include asset_path.html path='/assets/css/style.css' %}"></noscript>
   <meta name="color-scheme" content="light dark">
   
   <!-- Structured data for better SEO -->
@@ -90,6 +90,7 @@
       &copy; <span id="copyright-year"></span> azurepwq. All rights reserved.
     </div>
   </footer>
+  <script src="{% include asset_path.html path='/assets/js/version.js' %}"></script>
   <script>
     // Theme toggle functionality
     (function() {

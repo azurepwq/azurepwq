@@ -1,0 +1,7 @@
+{% comment %}
+  Usage: {% include asset_path.html path="/assets/css/style.css" %}
+  Returns the path with version parameter appended
+{% endcomment %}
+
+{% capture timestamp %}{{ site.time | date: '%Y%m%d%H%M' }}{% endcapture %}
+{{ include.path }}?v={{ site.asset_version }}.{{ timestamp }} 
