@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://azurepwq.com/sitemap.xml
+
+# Block bots from crawling specific folders
+User-agent: *
+Disallow: /.github/
+Disallow: /.jekyll-cache/ 
