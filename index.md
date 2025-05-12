@@ -1,3 +1,8 @@
+---
+layout: default
+title: Azure Pan
+---
+
 # Azure Pan
 
 ### Software Engineer · Writer · INFP

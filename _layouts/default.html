@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Azure Pan (Software Engineer, Writer, and INFP) focused on AI security and blockchain technology">
+  <meta name="theme-color" content="#C25938">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117">
+  
+  <!-- Security headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://raw.githubusercontent.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  
+  <!-- Social media sharing -->
+  <meta property="og:title" content="Azure Pan | Software Engineer">
+  <meta property="og:description" content="Software Engineer passionate about deep learning, AI security, and blockchain technology">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://azurepwq.github.io">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@azurepwq">
+  
+  <!-- Favicon support -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Azure Pan",
+    "url": "https://azurepwq.github.io",
+    "jobTitle": "Software Engineer",
+    "sameAs": [
+      "https://github.com/azurepwq",
+      "https://x.com/azurepwq"
+    ],
+    "knowsAbout": ["JavaScript", "TypeScript", "Deep Learning", "AI Security", "Blockchain"]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+  <div class="theme-toggle">
+    <button id="theme-toggle-btn" aria-label="Toggle dark/light mode">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+  <main id="main-content">
+    {{ content }}
+  </main>
+  <script>
+    // Theme toggle functionality
+    (function() {
+      const themeToggle = document.getElementById('theme-toggle-btn');
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // Check for saved theme preference or use the system preference
+      const currentTheme = localStorage.getItem('theme') || 
+                          (prefersDarkScheme.matches ? 'dark' : 'light');
+      
+      // Set the initial theme
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      updateThemeToggleIcon(currentTheme);
+      
+      // Toggle theme when button is clicked
+      themeToggle.addEventListener('click', () => {
+        const newTheme = document.documentElement.getAttribute('data-theme') === 'light' 
+                        ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeToggleIcon(newTheme);
+      });
+      
+      // Update the toggle icon based on current theme
+      function updateThemeToggleIcon(theme) {
+        const moonIcon = document.querySelector('.moon-icon');
+        const sunIcon = document.querySelector('.sun-icon');
+        
+        if (theme === 'dark') {
+          moonIcon.style.display = 'none';
+          sunIcon.style.display = 'block';
+        } else {
+          moonIcon.style.display = 'block';
+          sunIcon.style.display = 'none';
+        }
+      }
+    })();
+  </script>
+</body>
+</html> 

@@ -1,0 +1,22 @@
+name: Sync README.md to index.md
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run sync script
+        run: |
+          chmod +x sync-readme-to-index.sh
+          ./sync-readme-to-index.sh
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add index.md
+          git diff --cached --quiet || git commit -m 'Sync README.md to index.md [auto]'
+          git push 
