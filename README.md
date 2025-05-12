@@ -2,8 +2,7 @@
 
 ### Software Engineer · Writer · INFP
 
-I am a JavaScript/TypeScript software engineer passionate about deep learning, AI security, and blockchain technology. <br />
-My work focuses on building intuitive and secure tools that solve real problems.
+I am a JavaScript/TypeScript software engineer passionate about deep learning, AI security, and blockchain technology. Currently, I am working on intuitive and secure tools that solve real problems.
 
 ## Skills
 
@@ -26,22 +25,18 @@ My work focuses on building intuitive and secure tools that solve real problems.
 
 ## Connect With Me
 
-<div class="contact-list">
-  <div class="contact-item">
-    <a href="https://github.com/azurepwq" class="social-button github-button">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" width="16" height="16"> @azurepwq
-    </a>
-  </div>
-  <div class="contact-item">
-    <a href="https://x.com/azurepwq" class="social-button twitter-button">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" width="16" height="16"> @azurepwq
-    </a>
-  </div>
-  <div class="contact-item">
-    <a href="mailto:azurepwq@gmail.com" class="social-button email-button">
-      ✉️&nbsp;&nbsp;azurepwq@gmail.com
-    </a>
-  </div>
+<div align="left">
+  <a href="https://github.com/azurepwq">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" width="24" height="24"> GitHub: @azurepwq
+  </a>
+  <br>
+  <a href="https://x.com/azurepwq">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" width="24" height="24"> X: @azurepwq
+  </a>
+  <br>
+  <a href="mailto:azurepwq@gmail.com">
+    ✉️ Email: azurepwq@gmail.com
+  </a>
 </div>
 
 <!---
