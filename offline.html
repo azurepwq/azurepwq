@@ -1,0 +1,133 @@
+---
+layout: default
+title: You're Offline
+permalink: /offline.html
+---
+
+<div class="offline-page">
+  <div class="offline-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="1" y1="1" x2="23" y2="23"></line>
+      <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+      <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+      <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+      <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+      <line x1="12" y1="20" x2="12.01" y2="20"></line>
+    </svg>
+  </div>
+  
+  <h1>You're Offline</h1>
+  
+  <p>It looks like you've lost your internet connection. Some content and features may be unavailable.</p>
+  
+  <div class="offline-actions">
+    <button onclick="window.location.reload()" class="retry-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 4v6h-6"></path>
+        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+      </svg>
+      Retry Connection
+    </button>
+    
+    <a href="/" class="home-link">Back to Home</a>
+  </div>
+  
+  <div class="offline-help">
+    <h2>Available Offline</h2>
+    <p>Some pages of this site are cached for offline use, including:</p>
+    <ul class="offline-pages">
+      <li><a href="/">Home Page</a></li>
+      <li><a href="/404.html">404 Page</a></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .offline-page {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .offline-icon {
+    margin: 2rem auto;
+    color: var(--accent-color);
+  }
+  
+  .offline-page h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .offline-actions {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .retry-button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+  }
+  
+  .retry-button:hover {
+    background-color: var(--primary-color);
+  }
+  
+  .home-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+  }
+  
+  .home-link:hover {
+    background-color: var(--border-color);
+  }
+  
+  .offline-help {
+    margin-top: 3rem;
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+  }
+  
+  .offline-pages {
+    margin-top: 1rem;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .offline-pages li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .offline-pages a {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .offline-pages a:hover {
+    background-color: var(--border-color);
+  }
+</style> 
