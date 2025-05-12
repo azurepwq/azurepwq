@@ -25,18 +25,22 @@ I am a JavaScript/TypeScript software engineer passionate about deep learning, A
 
 ## Connect With Me
 
-<div align="left">
-  <a href="https://github.com/azurepwq">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" width="24" height="24"> GitHub: @azurepwq
-  </a>
-  <br>
-  <a href="https://x.com/azurepwq">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" width="24" height="24"> X: @azurepwq
-  </a>
-  <br>
-  <a href="mailto:azurepwq@gmail.com">
-    ✉️ Email: azurepwq@gmail.com
-  </a>
+<div class="contact-list" align="left">
+  <div class="contact-item">
+    <a href="https://github.com/azurepwq" class="social-button github-button" style="text-decoration: none;">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" width="24" height="24" align="center"> @azurepwq
+    </a>
+  </div>
+  <div class="contact-item">
+    <a href="https://x.com/azurepwq" class="social-button twitter-button" style="text-decoration: none;">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" width="24" height="24" align="center"> @azurepwq
+    </a>
+  </div>
+  <div class="contact-item">
+    <a href="mailto:azurepwq@gmail.com" class="social-button email-button" style="text-decoration: none;">
+      ✉️ azurepwq@gmail.com
+    </a>
+  </div>
 </div>
 
 <!---
