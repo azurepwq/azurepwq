@@ -170,6 +170,40 @@ Changes are automatically deployed when pushed to the main branch. GitHub Action
 1. Sync README.md to index.md via `.github/workflows/sync-readme-to-index.yml`
 2. Build and deploy the site via GitHub Pages
 
+## International Accessibility
+
+The site includes optimizations for better accessibility in regions with restricted internet access, particularly China:
+
+### CDN and Performance Optimizations
+
+1. **Use CDN-friendly Image Sources**:
+   - For icons and images, prefer `cdn.jsdelivr.net` over direct GitHub links:
+   ```html
+   <!-- Prefer this (works in China) -->
+   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+   
+   <!-- Instead of this (may be blocked) -->
+   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg">
+   ```
+
+2. **Resource Hints**:
+   - The site uses DNS prefetching and preconnect to speed up resource loading:
+   ```html
+   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+   ```
+
+3. **Minimize External Resources**:
+   - Keep external resources minimal and hosted on CDNs accessible globally
+   - Inline critical CSS when possible
+
+### Testing Accessibility
+
+To verify the site works in China, you can use:
+- [WebSitePulse](https://www.websitepulse.com/tools/china-firewall-test) - Great Wall of China firewall test
+- [Pingdom](https://tools.pingdom.com/) - Test load times from different locations
+- [GreatFire.org Analyzer](https://en.greatfire.org/analyzer) - Check if resources are blocked
+
 ## Troubleshooting
 
 ### Ruby Version Issues

@@ -33,12 +33,12 @@ I am a JavaScript/TypeScript software engineer passionate about deep learning, A
 <div class="contact-list" align="left">
   <div class="contact-item">
     <a href="https://github.com/azurepwq" class="social-button github-button" style="text-decoration: none;">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" width="24" height="24" align="center"> @azurepwq
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="24" height="24" align="center"> @azurepwq
     </a>
   </div>
   <div class="contact-item">
     <a href="https://x.com/azurepwq" class="social-button twitter-button" style="text-decoration: none;">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" width="24" height="24" align="center"> @azurepwq
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" width="24" height="24" align="center"> @azurepwq
     </a>
   </div>
   <div class="contact-item">
