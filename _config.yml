@@ -3,6 +3,6 @@ markdown: kramdown
 sass:
   style: compressed
 title: "azurepwq"
-description: "Azure Pan(azurepwq | azurepwq@gmail.com) - [Software Engineer | Writer | INFP] passionate about deep learning, AI security, and blockchain technology"
+description: "Azure Pan (azurepwq) - JavaScript/TypeScript software engineer with interests in deep learning, AI security, and blockchain technology"
 repository: "azurepwq/azurepwq"
 github: [metadata]

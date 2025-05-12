@@ -2,7 +2,7 @@
 cat > index.md <<EOF
 ---
 layout: default
-title: Azure Pan
+title: azurepwq
 ---
 
 EOF

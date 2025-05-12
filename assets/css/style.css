@@ -23,7 +23,7 @@ h1 {
   margin-bottom: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
 }
 
 h2 {
@@ -34,7 +34,7 @@ h2 {
   letter-spacing: -0.01em;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
-  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
 }
 
 h3 {
@@ -42,14 +42,17 @@ h3 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
 }
 
 h4 {
   color: #525252;
+  font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 h5 {
   color: #646464; /* Lightest */
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
 /* Primary color variables */
@@ -222,11 +225,16 @@ a[href*="twitter.com"] img {
 
 /* Introduction styling */
 p:first-of-type {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #2d2d2d;
-  margin: 1.8rem 0;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--subheading-color);
+  margin: 1.8rem 0 2.2rem;
   letter-spacing: 0.01rem;
+  font-weight: 400;
+}
+
+html[data-theme="dark"] p:first-of-type {
+  color: #e1e5ed;
 }
 
 /* Responsive styles for mobile */
@@ -240,24 +248,24 @@ p:first-of-type {
     background-color: #f9f9f9;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
     margin-bottom: 1.2rem;
   }
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-top: 2rem;
     margin-bottom: 1.2rem;
   }
   h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
   }
   p:first-of-type {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.8rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 1.5rem 0 2rem;
   }
   
   /* Much clearer list spacing for mobile */
