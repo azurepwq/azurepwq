@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Azure Pan
+title: azurepwq
 ---
 
 # Azure Pan
