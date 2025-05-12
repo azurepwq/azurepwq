@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: var(--font-primary);
   background: var(--bg-color);
   color: var(--text-color);
   margin: 0;
@@ -24,6 +24,7 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.01em;
   font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-family: var(--font-primary);
 }
 
 h2 {
@@ -35,6 +36,7 @@ h2 {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
   font-size: clamp(1.3rem, 3vw, 1.5rem);
+  font-family: var(--font-primary);
 }
 
 h3 {
@@ -43,16 +45,19 @@ h3 {
   margin-bottom: 1rem;
   font-weight: 600;
   font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  font-family: var(--font-primary);
 }
 
 h4 {
   color: #525252;
   font-size: clamp(1rem, 2vw, 1.1rem);
+  font-family: var(--font-primary);
 }
 
 h5 {
   color: #646464; /* Lightest */
   font-size: clamp(0.9rem, 1.8vw, 1rem);
+  font-family: var(--font-primary);
 }
 
 /* Primary color variables */
@@ -425,4 +430,13 @@ html[data-theme="dark"] .site-footer {
     content: " (" attr(href) ")";
     font-size: 0.8em;
   }
+}
+
+/* Adding font-display swap to any existing @font-face declarations */
+@font-face {
+  font-family: 'System UI';
+  font-style: normal;
+  font-weight: 400;
+  src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
+  font-display: swap;
 } 

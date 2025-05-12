@@ -14,7 +14,9 @@ const ASSETS_TO_CACHE = [
   '/assets/js/version.js',
   '/assets/js/offline.js',
   '/assets/js/service-worker-register.js',
-  '/manifest.json'
+  '/assets/fonts/fonts.css',
+  '/manifest.json',
+  'https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2'
 ];
 
 // Install event - cache core assets
@@ -49,6 +51,31 @@ self.addEventListener('activate', event => {
 
 // Fetch event - serve from cache or network
 self.addEventListener('fetch', event => {
+  // Special handling for Google Fonts
+  if (event.request.url.includes('fonts.gstatic.com')) {
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        if (response) return response;
+        
+        return fetch(event.request).then(response => {
+          // Cache the font files
+          if (!response || response.status !== 200) {
+            return response;
+          }
+          
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
+          });
+          
+          return response;
+        });
+      })
+    );
+    return;
+  }
+  
+  // Handle regular requests
   event.respondWith(
     caches.match(event.request)
       .then(response => {

@@ -7,6 +7,12 @@
   <meta name="theme-color" content="#C25938">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121520">
   
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="font-rendering" content="optimizeLegibility">
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{% include asset_path.html path='/assets/fonts/fonts.css' %}">
+  
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
