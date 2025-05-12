@@ -66,24 +66,26 @@ h5 {
   --heading-color: #1a1a1a;
   --subheading-color: #2d2d2d;
   --border-color: rgba(0,0,0,0.05);
+  --list-text-color: #333333;
 }
 
 /* Dark mode theme variables */
 html[data-theme="dark"] {
-  --bg-color: #0d1117;
-  --text-color: #e6edf3;
-  --heading-color: #f0f6fc;
-  --subheading-color: #c9d1d9;
+  --bg-color: #121520;
+  --text-color: #e1e5ed;
+  --heading-color: #ffffff;
+  --subheading-color: #e1e5ed;
   --border-color: rgba(255,255,255,0.1);
   --accent-color: #E27A59;
+  --list-text-color: #ccd1da;
 }
 
 html[data-theme="dark"] a {
-  color: #E27A59;
+  color: #F09879;
 }
 
 html[data-theme="dark"] a:hover {
-  color: #F09879;
+  color: #FFC5AD;
 }
 
 html[data-theme="dark"] .social-button img {
@@ -91,7 +93,19 @@ html[data-theme="dark"] .social-button img {
 }
 
 html[data-theme="dark"] h3 {
-  color: #B3B3B3;
+  color: #ccd1da;
+}
+
+html[data-theme="dark"] p:first-of-type {
+  color: #e1e5ed;
+}
+
+html[data-theme="dark"] ul {
+  color: var(--list-text-color);
+}
+
+html[data-theme="dark"] strong {
+  color: #ffffff;
 }
 
 a {
@@ -169,7 +183,7 @@ a[href*="twitter.com"] img {
 .social-button {
   display: inline-block;
   padding: 6px 14px;
-  color: white;
+  color: white !important;
   border-radius: 20px;
   text-decoration: none !important;
   font-weight: bold;
@@ -182,7 +196,7 @@ a[href*="twitter.com"] img {
 .social-button:hover {
   opacity: 0.95;
   transform: translateY(-2px) scale(1.02);
-  color: rgba(255, 255, 255, 0.95);
+  color: white !important;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
@@ -281,6 +295,10 @@ p:first-of-type {
   .social-button img {
     margin-right: 8px;
   }
+  
+  html[data-theme="dark"] body {
+    background-color: #121520;
+  }
 }
 
 /* Add highlight to skill categories */
@@ -302,8 +320,8 @@ strong {
   color: white;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -316,15 +334,20 @@ strong {
 #theme-toggle-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  opacity: 0.9;
 }
 
 #theme-toggle-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .sun-icon {
   display: none;
+}
+
+html[data-theme="dark"] #theme-toggle-btn {
+  background: #F09879;
 }
 
 /* Footer styling */
