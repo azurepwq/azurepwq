@@ -327,6 +327,30 @@ strong {
   display: none;
 }
 
+/* Footer styling */
+.site-footer {
+  margin-top: 4rem;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright {
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.02em;
+}
+
+html[data-theme="dark"] .site-footer {
+  color: #777;
+}
+
 /* Print styles */
 @media print {
   body {

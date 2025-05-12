@@ -73,6 +73,11 @@
   <main id="main-content">
     {{ content }}
   </main>
+  <footer class="site-footer">
+    <div class="copyright">
+      &copy; <span id="copyright-year"></span> azurepwq. All rights reserved.
+    </div>
+  </footer>
   <script>
     // Theme toggle functionality
     (function() {
@@ -110,6 +115,9 @@
           sunIcon.style.display = 'none';
         }
       }
+      
+      // Update copyright year
+      document.getElementById('copyright-year').textContent = new Date().getFullYear();
     })();
   </script>
 </body>
