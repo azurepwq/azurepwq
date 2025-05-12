@@ -2,11 +2,11 @@
 
 ### Software Engineer · Writer · INFP
 
-I am a JavaScript/TypeScript software engineer passionate about deep learning, AI security, and blockchain technology. Currently, I am working on intuitive and secure tools that solve real problems.
+I am a JavaScript(TypeScript) software engineer passionate about deep learning, AI security, and blockchain technology. Currently, I am working on intuitive and secure tools that solve real problems.
 
 ## Skills
 
-- **Languages**: JavaScript, TypeScript, Python, Rust, Go
+- **Languages**: JavaScript(TypeScript), Python, Rust, Go
 - **Frontend**: React, Next.js
 - **Backend**: Hapi.js, Express
 - **Web3**: Blockchain, Smart Contracts, DApps
