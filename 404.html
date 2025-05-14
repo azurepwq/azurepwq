@@ -1,11 +1,74 @@
 ---
-permalink: /404.html
 layout: default
-title: 404 - Page not found
+title: 404 - Page Not Found
+permalink: /404.html
 ---
 
-<div style="text-align: center; padding: 50px 0;">
+<div class="error-page">
   <h1>404</h1>
-  <p>The page you're looking for doesn't exist.</p>
-  <a href="/" style="display: inline-block; margin-top: 20px; padding: 8px 16px; background: var(--accent-color); color: white; border-radius: 4px; text-decoration: none;">Return Home</a>
-</div> 
+  <div class="error-content">
+    <p>The page you're looking for doesn't exist.</p>
+    <p class="suggestion">You might want to check the URL or head back to the <a href="/">homepage</a>.</p>
+  </div>
+  
+  <div class="error-actions">
+    <a href="/" class="home-button">Go to Homepage</a>
+  </div>
+</div>
+
+<style>
+  .error-page {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .error-page h1 {
+    font-size: 6rem;
+    margin: 0;
+    color: var(--accent-color);
+    line-height: 1;
+  }
+  
+  .error-content {
+    margin: 2rem 0;
+  }
+  
+  .error-content p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+  
+  .suggestion {
+    opacity: 0.8;
+    font-size: 1rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  .error-actions {
+    margin-top: 2rem;
+  }
+  
+  .home-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .home-button:hover {
+    background-color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .home-button {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+  }
+</style> 
