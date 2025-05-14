@@ -3,6 +3,10 @@ name: Build and deploy Jekyll site to GitHub Pages
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/sync-readme-to-index.yml'
+      - 'sync-readme-to-index.sh'
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
