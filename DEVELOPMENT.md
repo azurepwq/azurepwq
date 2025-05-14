@@ -90,7 +90,28 @@ bundle install
 
 The site's content is maintained in `README.md`. When you modify this file, you'll need to sync it to your `index.md` file (which includes Jekyll front matter).
 
-### 2. Sync README.md to index.md
+### 2. Using NPM Scripts
+
+This project includes helpful npm scripts to streamline development:
+
+```bash
+# Start the Jekyll development server with livereload
+npm run dev
+
+# Sync README.md content to index.md (preserving front matter)
+npm run sync
+
+# Watch README.md for changes and automatically sync
+npm run watch
+
+# Run both dev server and watch simultaneously
+npm run start
+
+# Show all available commands
+npm run help
+```
+
+### 3. Sync README.md to index.md
 
 The `sync-readme-to-index.sh` script copies the content from `README.md` to `index.md` while preserving the Jekyll front matter:
 
@@ -103,7 +124,7 @@ Make this script executable if it's not already:
 chmod +x sync-readme-to-index.sh
 ```
 
-### 3. Start the Jekyll Server
+### 4. Start the Jekyll Server
 
 ```bash
 bundle exec jekyll serve --livereload
@@ -111,7 +132,7 @@ bundle exec jekyll serve --livereload
 
 This will start a local server at http://localhost:4000 with live reload enabled.
 
-### 4. Watch for README Changes (Optional)
+### 5. Watch for README Changes (Optional)
 
 For automatic syncing when you edit README.md, use the watch script in a separate terminal:
 

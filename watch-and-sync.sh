@@ -1,39 +1,39 @@
 #!/bin/bash
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# watch-and-sync.sh
+# This script watches for changes to README.md and automatically syncs to index.md
 
-echo -e "${BLUE}Starting watch script for README.md changes...${NC}"
-echo -e "${BLUE}Jekyll server should be running in a separate terminal.${NC}"
-echo -e "${BLUE}Press Ctrl+C to stop watching.${NC}"
+README="README.md"
+SYNC_SCRIPT="./sync-readme-to-index.sh"
 
-# Initial sync
-echo -e "${GREEN}Initial sync of README.md to index.md...${NC}"
-./sync-readme-to-index.sh
+# Check if the sync script exists and is executable
+if [ ! -x "$SYNC_SCRIPT" ]; then
+  echo "Making sync script executable"
+  chmod +x "$SYNC_SCRIPT"
+fi
 
-# Watch for changes in README.md
-while true; do
-  # Use fswatch if available, otherwise fall back to basic while loop
-  if command -v fswatch >/dev/null 2>&1; then
-    fswatch -o README.md | while read f; do
-      echo -e "${GREEN}README.md changed, syncing to index.md...${NC}"
-      ./sync-readme-to-index.sh
-      echo -e "${GREEN}Done! Jekyll should automatically rebuild.${NC}"
-    done
-    break
-  else
-    # Fall back to simple polling if fswatch is not available
-    LAST_MODIFIED=$(stat -f "%m" README.md)
+echo "👀 Watching $README for changes..."
+echo "Press Ctrl+C to stop"
+
+# Use fswatch if available, otherwise fall back to a simple polling mechanism
+if command -v fswatch &> /dev/null; then
+  # fswatch is available (macOS with Homebrew, some Linux)
+  fswatch -o "$README" | while read -r; do
+    echo "📝 Change detected in $README, syncing..."
+    "$SYNC_SCRIPT"
+  done
+else
+  # Simple polling fallback (less efficient)
+  LAST_MODIFIED=$(stat -c %Y "$README" 2>/dev/null || stat -f %m "$README" 2>/dev/null)
+  
+  while true; do
     sleep 2
-    NEW_MODIFIED=$(stat -f "%m" README.md)
+    CURRENT_MODIFIED=$(stat -c %Y "$README" 2>/dev/null || stat -f %m "$README" 2>/dev/null)
     
-    if [ "$LAST_MODIFIED" != "$NEW_MODIFIED" ]; then
-      echo -e "${GREEN}README.md changed, syncing to index.md...${NC}"
-      ./sync-readme-to-index.sh
-      echo -e "${GREEN}Done! Jekyll should automatically rebuild.${NC}"
+    if [ "$CURRENT_MODIFIED" != "$LAST_MODIFIED" ]; then
+      echo "📝 Change detected in $README, syncing..."
+      "$SYNC_SCRIPT"
+      LAST_MODIFIED=$CURRENT_MODIFIED
     fi
-  fi
-done 
+  done
+fi
