@@ -1,76 +1,36 @@
 /**
- * Service Worker for azurepwq.com
- * Version: {{ site.asset_version }}
- * Generated: {{ site.time | date: '%Y-%m-%d %H:%M' }}
+ * Auto-unregistering Service Worker for azurepwq.com
+ * This is a modified version that will automatically unregister itself
+ * to fix any cached issues and ensure a clean browsing experience.
  */
 
-// Use simple cache name to avoid template errors
-const CACHE_NAME = 'azurepwq-cache-v1';
-const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/assets/css/style.css',
-  '/apple-touch-icon.png',
-  '/favicon.ico',
-  '/favicon-16x16.png',
-  '/favicon-32x32.png'
-];
-
-// Install event - cache core assets
+// This is an empty service worker that unregisters itself on activation
 self.addEventListener('install', event => {
   self.skipWaiting();
-  
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Service worker installed');
-        
-        // Add resources one by one instead of using addAll
-        return Promise.all(
-          ASSETS_TO_CACHE.map(url => {
-            // Fetch and cache each resource individually
-            return fetch(url)
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error(`Failed to fetch ${url}`);
-                }
-                return cache.put(url, response);
-              })
-              .catch(error => {
-                console.log(`Failed to cache ${url}: ${error.message}`);
-                // Continue with other resources even if one fails
-                return Promise.resolve();
-              });
-          })
-        );
-      })
-  );
 });
 
-// Activate event - clean up old caches
+// Unregister self when activated
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
-  
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    self.registration.unregister()
+      .then(() => {
+        console.log('Service worker has been unregistered to fix caching issues');
+        return self.clients.matchAll();
+      })
+      .then(clients => {
+        // Inform all clients that service worker has been removed
+        clients.forEach(client => {
+          client.postMessage({
+            type: 'SERVICE_WORKER_UNREGISTERED',
+            message: 'Service worker has been unregistered'
+          });
+        });
+      })
   );
 });
 
-// Handle network requests
+// Empty fetch handler that doesn't intercept anything
 self.addEventListener('fetch', event => {
-  // Use a simple network-first strategy
-  event.respondWith(
-    fetch(event.request)
-      .catch(() => {
-        return caches.match(event.request);
-      })
-  );
+  // Don't intercept any requests
+  // Just let the browser handle everything normally
 });

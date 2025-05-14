@@ -7,6 +7,9 @@ on:
       - 'README.md'
       - '.github/workflows/sync-readme-to-index.yml'
       - 'sync-readme-to-index.sh'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [readme_changed]
 
 permissions:
   contents: write
