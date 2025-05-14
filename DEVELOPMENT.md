@@ -458,10 +458,19 @@ The Jekyll development server includes LiveReload functionality that automatical
 The website uses Content Security Policy headers for security. LiveReload requires WebSocket connections to function properly, so the CSP headers need to allow connections to the LiveReload server:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; ... connect-src 'self' ws://localhost:35729 wss://localhost:35729;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; ... connect-src 'self' ws://localhost:35730 wss://localhost:35730;">
 ```
 
 The CSP header is defined in `_layouts/default.html`.
+
+### LiveReload Port Configuration
+
+This project uses port 35730 for LiveReload instead of the default 35729 to avoid conflicts with other applications. The port is configured in:
+
+1. `package.json` in the "serve" script
+2. `assets/js/livereload-debug.js` for the debugging tools
+
+If you need to change this port, make sure to update both locations and the CSP header.
 
 ### Testing LiveReload Connection
 
@@ -477,8 +486,9 @@ The CSP header is defined in `_layouts/default.html`.
 1. **Connection Refused**: Make sure Jekyll is running with LiveReload enabled (`--livereload`).
 2. **CSP Errors**: Check that the Content Security Policy includes the WebSocket endpoints.
 3. **HTTPS Sites**: If using HTTPS locally, LiveReload must use secure WebSockets (`wss://`).
-4. **Port Conflicts**: LiveReload uses port 35729 by default. Ensure this port is available.
+4. **Port Conflicts**: LiveReload uses port 35730 in this project. If you see "port is in use" errors, you can change the port in `package.json` and update the other files accordingly.
 5. **Connection Reset Errors**: If you see `Errno::ECONNRESET: Connection reset by peer` errors, this is often normal when browser tabs are closed or refreshed. These errors don't affect site functionality.
+6. **Multiple Jekyll Servers**: Ensure you don't have multiple Jekyll instances running simultaneously, as they may conflict with each other.
 
 ### Debugging Script
 
@@ -493,3 +503,15 @@ This script provides:
 - Connection events logging in the console
 - A visual indicator showing connection status
 - A reconnect button for manual reconnection attempts
+
+## Custom Pages
+
+### 404 Page
+
+The site includes a custom 404 error page (`404.html`) that matches the site's design:
+
+1. **Styling**: Uses the brand color variables for consistency
+2. **Animations**: Includes subtle hover effects without color changes
+3. **Mobile Responsive**: Adapts to different screen sizes
+
+To test the 404 page, navigate to any non-existent URL (e.g., `/nonexistent-page`).
