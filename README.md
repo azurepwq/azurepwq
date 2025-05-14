@@ -2,7 +2,7 @@
 
 ### Software Engineer · Writer
 
-JavaScript/TypeScript software engineer with interests in deep learning, AI security, and blockchain technology. Currently learning and exploring these domains while working on personal projects that emphasize clean code and practical solutions.
+Software engineer with interests in deep learning, AI security, and blockchain technology. Currently learning and exploring these domains while working on personal projects that emphasize clean code and practical solutions.
 
 ## Skills
 
