@@ -1,0 +1,70 @@
+name: Document Check
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.md'
+      - '**.html'
+      - '**/*.js'
+      - '**/*.css'
+      - '**/*.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**.md'
+      - '**.html'
+      - '**/*.js'
+      - '**/*.css'
+      - '**/*.yml'
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+      
+      - name: Check Markdown Links
+        run: find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" | xargs -n1 markdown-link-check -q
+
+  check-docs-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check Version/Last Updated Format
+        run: |
+          for file in $(find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*"); do
+            if ! grep -q "Last Updated: [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}" "$file" && ! grep -q "Version: v[0-9]\+\.[0-9]\+\.[0-9]\+" "$file"; then
+              echo "Warning: $file is missing version or last updated date marker"
+            fi
+          done
+          
+          # Warnings won't make the workflow fail, but will notify users
+          exit 0
+
+  check-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check if CHANGELOG.md is updated
+        run: |
+          if [ ! -f CHANGELOG.md ]; then
+            echo "Error: CHANGELOG.md does not exist"
+            exit 1
+          fi
+          
+          # Check if CHANGELOG.md has recent updates
+          if ! grep -q "$(date +%Y)" CHANGELOG.md; then
+            echo "Warning: CHANGELOG.md may be missing updates from the current year"
+          fi 
