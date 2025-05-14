@@ -31,13 +31,28 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "404.html"
+      path: "_pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "_pages/404.html"
     values:
       permalink: /404.html
   - scope:
       path: "index.html"
     values:
       permalink: /  # Explicitly set root index.html permalink
+  - scope:
+      path: "assets/pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "assets/tools"
+    values:
+      layout: null
+
+# Include directories that Jekyll would otherwise ignore
+include: ["_pages", "assets/favicons"]
 
 # Asset versioning
 asset_version: "1.0.1"
