@@ -1,0 +1,26 @@
+{
+  "extends": ["@commitlint/config-conventional"],
+  "rules": {
+    "type-enum": [
+      2,
+      "always",
+      [
+        "Add",
+        "Fix",
+        "Update",
+        "Refactor",
+        "Docs",
+        "Style",
+        "Test",
+        "Build",
+        "CI",
+        "Chore"
+      ]
+    ],
+    "type-case": [2, "always", "pascal-case"],
+    "subject-case": [0],
+    "subject-full-stop": [0],
+    "body-leading-blank": [2, "always"],
+    "footer-leading-blank": [2, "always"]
+  }
+} 
