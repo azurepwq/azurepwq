@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "husky install",
     "lint:commit": "commitlint --from=HEAD~1",
-    "commit": "cz"
+    "commit": "cz",
+    "help:commit": "echo \"You can use either:\\n- Regular git commit: git commit -m 'Type: Your message'\\n- Guided commit wizard: npm run commit\\n\\nBoth methods will validate your commit message format.\""
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",

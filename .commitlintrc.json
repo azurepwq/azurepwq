@@ -14,10 +14,20 @@
         "Test",
         "Build",
         "CI",
-        "Chore"
+        "Chore",
+        "add",
+        "fix",
+        "update",
+        "refactor",
+        "docs",
+        "style",
+        "test",
+        "build",
+        "ci",
+        "chore"
       ]
     ],
-    "type-case": [2, "always", "pascal-case"],
+    "type-case": [0],
     "subject-case": [0],
     "subject-full-stop": [0],
     "body-leading-blank": [2, "always"],

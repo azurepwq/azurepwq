@@ -50,6 +50,24 @@ Fix: mobile display issues in navbar
 Docs: update setup instructions in DEVELOPMENT.md
 ```
 
+#### Commit Tools
+
+We provide helpful tools to assist with creating properly formatted commits:
+
+1. **Interactive Commit Helper**:
+   ```
+   npm run commit
+   ```
+   This tool guides you through the commit process with interactive prompts.
+
+2. **Standard Git Commit**:
+   ```
+   git commit -m "Type: Your message"
+   ```
+   You can also use standard git commands directly.
+
+Both methods will validate your commit message format against our standards.
+
 ## Testing Before Submission
 
 Before submitting changes:
