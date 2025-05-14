@@ -39,4 +39,14 @@ Thumbs.db
 
 # Temporary files
 tmp/
-.tmp/ 
+.tmp/
+
+# Generator outputs (add to Git once finalized)
+# favicon.ico
+# favicon-16x16.png
+# favicon-32x32.png
+# apple-touch-icon.png
+
+# Development HTML tools (keep these in Git)
+# favicon-generator.html
+# icon-generator.html 

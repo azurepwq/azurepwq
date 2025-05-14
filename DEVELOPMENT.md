@@ -1,4 +1,6 @@
 # Development Guide
+<!-- Version: v1.1.0 -->
+<!-- Last Updated: 2025-05-14 -->
 
 This document provides instructions for setting up and developing this GitHub Pages site locally.
 
@@ -163,6 +165,58 @@ Example HTML structure in README.md:
 </div>
 ```
 
+## Caching Strategy
+
+The site uses a Service Worker for improved performance and offline capabilities:
+
+### Service Worker Implementation
+
+- Located in `service-worker.js` in the root directory
+- Provides caching for static assets and pages
+- Configured to allow updates to propagate on refresh
+
+### Testing Cache Behavior
+
+1. **Developer Tools**: Chrome DevTools > Application > Service Workers
+2. **Force Update**: Enable "Update on reload" to force fresh content
+3. **Unregister**: During development, you can unregister the Service Worker to prevent caching
+
+### Development Mode
+
+During development, you may want to:
+```javascript
+// In service-worker.js
+self.addEventListener('install', (event) => {
+  // Force activation without waiting for tabs to close
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  // Claim clients immediately
+  event.waitUntil(clients.claim());
+});
+```
+
+## Icon Generation
+
+The site includes tools for generating various icons and assets:
+
+### Favicon Generator
+
+Use `favicon-generator.html` to create favicon files:
+
+1. Open `favicon-generator.html` in your browser
+2. Upload or create your desired icon
+3. Customize colors and settings
+4. Generate and download the icon files
+5. Place files in the appropriate locations in the project
+
+### Using Generated Icons
+
+- `favicon.ico` goes in the root directory
+- `apple-touch-icon.png` goes in the root directory
+- Other size variations should be placed as specified in `_layouts/default.html`
+
 ## Deployment
 
 Changes are automatically deployed when pushed to the main branch. GitHub Actions will:
@@ -230,4 +284,34 @@ bundle init
 echo 'gem "github-pages", group: :jekyll_plugins' >> Gemfile
 echo 'gem "webrick", "~> 1.7"' >> Gemfile
 bundle install
-``` 
+```
+
+## Security Headers
+
+The site implements several security headers for improved security:
+
+### Content Security Policy
+
+Located in `_layouts/default.html`, the CSP restricts:
+- Which resources can be loaded
+- Where scripts can be executed from
+- Frame embedding policies
+
+Example:
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+```
+
+### Cache Control Headers
+
+For GitHub Pages, cache headers are configured via:
+- `_headers` file (if using Netlify)
+- Service Worker cache settings
+
+## External Resources
+
+- [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+- [Favicon Generator](https://realfavicongenerator.net/)
+- [Jekyll Documentation](https://jekyllrb.com/docs/)
+- [GitHub Pages](https://docs.github.com/en/pages)
+- [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
