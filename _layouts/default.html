@@ -10,7 +10,7 @@
   <!-- Font Optimization -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="font-rendering" content="optimizeLegibility">
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+  <!--<link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin>-->
   <link rel="stylesheet" href="{% include asset_path.html path='/assets/fonts/fonts.css' %}">
   
   <!-- Performance optimizations -->
@@ -22,9 +22,8 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   
   <!-- Security headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://raw.githubusercontent.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://raw.githubusercontent.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   
   <!-- Social media sharing -->

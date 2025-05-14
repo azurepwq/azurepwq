@@ -1,3 +1,4 @@
+# Site configuration
 theme: null
 markdown: kramdown
 sass:
@@ -7,5 +8,17 @@ description: "Azure Pan (azurepwq) - JavaScript/TypeScript software engineer wit
 repository: "azurepwq/azurepwq"
 github: [metadata]
 
-# Asset versioning
-asset_version: "1.0.0"
+# Asset versioning (increment this when making significant changes)
+asset_version: "1.0.1"
+
+# Cache control
+cache:
+  enabled: true
+  max_age: 3600        # 1 hour for most resources
+  s_maxage: 86400      # 1 day for CDN
+
+# Disable template caching for development
+liquid:
+  error_mode: strict
+  strict_filters: true
+  strict_variables: false
