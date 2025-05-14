@@ -4,113 +4,73 @@
  * Generated: {{ site.time | date: '%Y-%m-%d %H:%M' }}
  */
 
-const CACHE_NAME = 'azurepwq-cache-v{{ site.asset_version }}';
+// Use simple cache name to avoid template errors
+const CACHE_NAME = 'azurepwq-cache-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/404.html',
-  '/offline.html',
   '/assets/css/style.css',
-  '/assets/js/version.js',
-  '/assets/js/offline.js',
-  '/assets/js/service-worker-register.js',
-  '/assets/fonts/fonts.css',
-  '/manifest.json',
-  'https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2'
+  '/apple-touch-icon.png',
+  '/favicon.ico',
+  '/favicon-16x16.png',
+  '/favicon-32x32.png'
 ];
 
 // Install event - cache core assets
 self.addEventListener('install', event => {
+  self.skipWaiting();
+  
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(ASSETS_TO_CACHE);
+        console.log('Service worker installed');
+        
+        // Add resources one by one instead of using addAll
+        return Promise.all(
+          ASSETS_TO_CACHE.map(url => {
+            // Fetch and cache each resource individually
+            return fetch(url)
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error(`Failed to fetch ${url}`);
+                }
+                return cache.put(url, response);
+              })
+              .catch(error => {
+                console.log(`Failed to cache ${url}: ${error.message}`);
+                // Continue with other resources even if one fails
+                return Promise.resolve();
+              });
+          })
+        );
       })
-      .then(() => self.skipWaiting())
   );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(self.clients.claim());
   
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            // Delete any old caches
+          if (cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
         })
       );
-    }).then(() => self.clients.claim())
+    })
   );
 });
 
-// Fetch event - serve from cache or network
+// Handle network requests
 self.addEventListener('fetch', event => {
-  // Special handling for Google Fonts
-  if (event.request.url.includes('fonts.gstatic.com')) {
-    event.respondWith(
-      caches.match(event.request).then(response => {
-        if (response) return response;
-        
-        return fetch(event.request).then(response => {
-          // Cache the font files
-          if (!response || response.status !== 200) {
-            return response;
-          }
-          
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseToCache);
-          });
-          
-          return response;
-        });
-      })
-    );
-    return;
-  }
-  
-  // Handle regular requests
+  // Use a simple network-first strategy
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return the response
-        if (response) {
-          return response;
-        }
-        
-        // Clone the request
-        const fetchRequest = event.request.clone();
-        
-        return fetch(fetchRequest)
-          .then(response => {
-            // Check if valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-            
-            // Clone the response
-            const responseToCache = response.clone();
-            
-            // Cache the fetched resource
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-              
-            return response;
-          })
-          .catch(() => {
-            // Return the offline page for navigation requests
-            if (event.request.mode === 'navigate') {
-              return caches.match('/offline.html');
-            }
-          });
+    fetch(event.request)
+      .catch(() => {
+        return caches.match(event.request);
       })
   );
 });
