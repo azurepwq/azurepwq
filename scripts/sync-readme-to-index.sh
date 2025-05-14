@@ -52,5 +52,9 @@ echo "💾 Updating $HOME_PAGE with new content..."
 cp "$TEMP_FILE" "$HOME_PAGE"
 rm "$TEMP_FILE"
 
+# Touch the _pages directory to ensure Jekyll detects the change
+echo "🔄 Triggering Jekyll rebuild..."
+touch _pages
+
 echo "✅ Successfully synced $README to $HOME_PAGE"
 echo "🕒 Sync completed at $(date)" 

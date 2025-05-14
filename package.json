@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "npm-run-all --parallel serve watch",
-    "serve": "bundle exec jekyll serve --livereload",
+    "serve": "bundle exec jekyll serve --livereload --force_polling",
     "build": "bundle exec jekyll build",
     "clean": "bundle exec jekyll clean",
     "cname": "echo 'azurepwq.com' > _site/CNAME",
