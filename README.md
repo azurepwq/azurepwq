@@ -45,9 +45,3 @@ Software engineer with interests in deep learning, AI security, and blockchain t
     </a>
   </div>
 </div>
-
-<!---
-azurepwq/azurepwq is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
-
