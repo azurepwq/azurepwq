@@ -118,8 +118,8 @@ html[data-theme="dark"] strong {
 
 a {
   color: #1a1a1a;
-  text-decoration: none;
-  font-style: italic;
+  text-decoration: underline;
+  font-style: normal;
 }
 
 a:hover {
@@ -140,6 +140,7 @@ a:focus-visible {
   width: 1px;
   height: 1px;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .skip-to-content:focus {

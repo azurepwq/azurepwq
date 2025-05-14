@@ -91,8 +91,8 @@
   </style>
 </head>
 <body>
-  <h1>Favicon Generator</h1>
-  <p>This tool will help you create all necessary favicon files for your website.</p>
+  <h1>Round Favicon Generator</h1>
+  <p>This tool will help you create round favicon files for your website.</p>
   
   <div class="controls">
     <label>
@@ -143,12 +143,12 @@
   <div class="instructions">
     <h2>Instructions</h2>
     <ol>
-      <li>Customize your favicon using the controls above</li>
+      <li>Customize your round favicon using the controls above</li>
       <li>Click "Generate All Favicons" to preview all sizes</li>
       <li>Download individual files or all at once</li>
       <li>Place all files in your website's root directory</li>
     </ol>
-    <p>Note: The <code>favicon.ico</code> download is actually a PNG file. For a true ICO file, you may need to convert it using an online converter if needed, but modern browsers support PNG favicons.</p>
+    <p>Note: These favicons are designed with a circular shape. The <code>favicon.ico</code> download is actually a PNG file. For a true ICO file, you may need to convert it using an online converter if needed, but modern browsers support PNG favicons.</p>
   </div>
   
   <script>
@@ -207,9 +207,11 @@
       // Clear canvas
       ctx.clearRect(0, 0, size, size);
       
-      // Draw background
+      // Draw circular background
       ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, size, size);
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+      ctx.fill();
       
       // Draw text
       ctx.fillStyle = textColor;
