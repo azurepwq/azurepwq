@@ -12,8 +12,8 @@ JavaScript/TypeScript software engineer with interests in deep learning, AI secu
 ## Skills
 
 - **Languages**: JavaScript(TypeScript), Python, Rust, Go
-- **Frontend**: React, Next.js
-- **Backend**: Hapi.js, Express
+- **Frontend**: [React](https://react.dev/), [Next.js](https://nextjs.org/)
+- **Backend**: [Hapi.js](https://hapi.dev/), [Express](https://expressjs.com/)
 - **Web3**: Blockchain, Smart Contracts, DApps
 
 ## Interests
@@ -26,6 +26,10 @@ JavaScript/TypeScript software engineer with interests in deep learning, AI secu
 
 - [Large Language Model Agents - MOOC, Fall 2024](https://llmagents-learning.org/f24)
 - [Advanced Large Language Model Agents - MOOC, Spring 2025](https://llmagents-learning.org/sp25)
+- [A2A - An open protocol enabling communication and interoperability between opaque agentic applications](https://github.com/google/A2A)
+- [MCP - An open protocol that enables seamless integration between LLM applications and external data sources and tools](https://github.com/modelcontextprotocol)
+- [区块链技术与应用 - 肖臻老师 2018](http://zhenxiao.com/blockchain/)
+
 
 ## Connect With Me
 
