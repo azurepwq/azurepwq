@@ -5,11 +5,22 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "lint:commit": "commitlint --from=HEAD~1"
+    "lint:commit": "commitlint --from=HEAD~1",
+    "commit": "cz"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
+    "commitizen": "^4.3.0",
+    "cz-customizable": "^7.0.0",
     "husky": "^8.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
+    }
   }
 } 
