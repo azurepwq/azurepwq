@@ -1,14 +1,13 @@
 # Site configuration
-title: Azure PWQ
+title: azurepwq
 description: Developer | Problem Solver | Web Enthusiast
 url: https://azurepwq.com
 baseurl: ""
-author: Azure PWQ
+author: azurepwq
 timezone: Asia/Shanghai
 repository: "azurepwq/azurepwq"
 
 # Build settings
-# Removed theme reference to use custom styles
 markdown: kramdown
 sass:
   style: compressed
@@ -22,7 +21,14 @@ highlighter: rouge
 gist:
   noscript: false
 
-# Asset versioning (increment this when making significant changes)
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Asset versioning
 asset_version: "1.0.1"
 
 # Cache control
@@ -30,15 +36,6 @@ cache:
   enabled: true
   max_age: 3600        # 1 hour for most resources
   s_maxage: 86400      # 1 day for CDN
-
-# Disable template caching for development
-liquid:
-  error_mode: strict
-  strict_filters: true
-  strict_variables: false
-
-# Optional Google Analytics
-google_analytics: # Optional
 
 # Plugins
 plugins:
