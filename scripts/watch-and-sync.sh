@@ -1,39 +1,37 @@
 #!/bin/bash
 
 # watch-and-sync.sh
-# This script watches for changes to README.md and automatically syncs to index.md
+# This script watches for changes to README.md and syncs them to _pages/home.md
 
 README="README.md"
-SYNC_SCRIPT="./sync-readme-to-index.sh"
+HOME_PAGE="_pages/home.md"
 
-# Check if the sync script exists and is executable
-if [ ! -x "$SYNC_SCRIPT" ]; then
-  echo "Making sync script executable"
-  chmod +x "$SYNC_SCRIPT"
+# Check if watchman is installed
+if ! command -v watchman &> /dev/null; then
+    echo "Error: watchman is not installed. Please install it to use this script."
+    echo "On macOS: brew install watchman"
+    echo "On Linux: https://facebook.github.io/watchman/docs/install.html"
+    exit 1
 fi
 
-echo "👀 Watching $README for changes..."
-echo "Press Ctrl+C to stop"
+# Use watchman to monitor README.md for changes
+echo "Setting up watchman to monitor $README for changes..."
+watchman watch-del-all
+watchman watch $(pwd)
 
-# Use fswatch if available, otherwise fall back to a simple polling mechanism
-if command -v fswatch &> /dev/null; then
-  # fswatch is available (macOS with Homebrew, some Linux)
-  fswatch -o "$README" | while read -r; do
-    echo "📝 Change detected in $README, syncing..."
-    "$SYNC_SCRIPT"
-  done
-else
-  # Simple polling fallback (less efficient)
-  LAST_MODIFIED=$(stat -c %Y "$README" 2>/dev/null || stat -f %m "$README" 2>/dev/null)
-  
-  while true; do
-    sleep 2
-    CURRENT_MODIFIED=$(stat -c %Y "$README" 2>/dev/null || stat -f %m "$README" 2>/dev/null)
-    
-    if [ "$CURRENT_MODIFIED" != "$LAST_MODIFIED" ]; then
-      echo "📝 Change detected in $README, syncing..."
-      "$SYNC_SCRIPT"
-      LAST_MODIFIED=$CURRENT_MODIFIED
-    fi
-  done
-fi
+# Define a trigger to run the sync script when README.md changes
+watchman -j <<-EOT
+["trigger", "$(pwd)", {
+  "name": "sync-readme",
+  "expression": ["name", "$README", "wholename"],
+  "command": ["./scripts/sync-readme-to-index.sh"]
+}]
+EOT
+
+echo "Watching $README for changes. Changes will be synced to $HOME_PAGE."
+echo "Press Ctrl+C to stop watching."
+
+# Keep the script running until interrupted
+while true; do
+    sleep 1
+done

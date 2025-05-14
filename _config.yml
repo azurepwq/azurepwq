@@ -39,6 +39,10 @@ defaults:
     values:
       permalink: /404.html
   - scope:
+      path: "_pages/home.md"
+    values:
+      permalink: /
+  - scope:
       path: "index.html"
     values:
       permalink: /  # Explicitly set root index.html permalink
@@ -52,7 +56,9 @@ defaults:
       layout: null
 
 # Include directories that Jekyll would otherwise ignore
-include: ["_pages", "assets/favicons"]
+include:
+  - _pages
+  - assets/favicons
 
 # Asset versioning
 asset_version: "1.0.1"

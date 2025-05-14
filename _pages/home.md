@@ -1,6 +1,7 @@
 ---
 layout: default
 title: azurepwq
+permalink: /
 ---
 # Azure Pan
 
