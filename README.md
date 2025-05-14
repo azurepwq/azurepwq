@@ -6,7 +6,7 @@ Software engineer with interests in deep learning, AI security, and blockchain t
 
 ## Skills
 
-- **Languages**: JavaScript(TypeScript), Python, Rust, Go
+- **Languages**: JavaScript(TypeScript), Python, Rust
 - **Frontend**: [React](https://react.dev/), [Next.js](https://nextjs.org/)
 - **Backend**: [Hapi.js](https://hapi.dev/), [Express](https://expressjs.com/)
 - **Web3**: Blockchain, Smart Contracts, DApps
