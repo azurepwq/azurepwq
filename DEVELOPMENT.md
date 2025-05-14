@@ -465,10 +465,12 @@ The CSP header is defined in `_layouts/default.html`.
 
 ### Testing LiveReload Connection
 
-1. Open the file `livereload-test.html` in your browser. This page includes a debug script that will show connection status.
+1. Open the file `/dev/livereload-test/` in your browser when running the development server. This page includes a debug script that will show connection status.
 2. Check the browser console for connection messages.
 3. Look for the visual indicator in the bottom right of the page.
 4. Use the "Reconnect LiveReload" button to force a reconnection attempt.
+
+> **Note**: The LiveReload test page is configured with `published: false` and will not be included in production builds. It's specifically for local development testing.
 
 ### Common Issues
 
@@ -476,6 +478,7 @@ The CSP header is defined in `_layouts/default.html`.
 2. **CSP Errors**: Check that the Content Security Policy includes the WebSocket endpoints.
 3. **HTTPS Sites**: If using HTTPS locally, LiveReload must use secure WebSockets (`wss://`).
 4. **Port Conflicts**: LiveReload uses port 35729 by default. Ensure this port is available.
+5. **Connection Reset Errors**: If you see `Errno::ECONNRESET: Connection reset by peer` errors, this is often normal when browser tabs are closed or refreshed. These errors don't affect site functionality.
 
 ### Debugging Script
 
