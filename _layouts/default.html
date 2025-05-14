@@ -13,8 +13,8 @@
       // Get the current path and normalize it
       var path = window.location.pathname;
       
-      // Check if the path is /index or starts with /index/
-      if (path === '/index' || path === '/index/' || path.indexOf('/index/') === 0) {
+      // Check if the path is /index, /index.html or starts with /index/
+      if (path === '/index' || path === '/index.html' || path === '/index/' || path.indexOf('/index/') === 0) {
         // Set title immediately
         document.title = '404 - Page Not Found';
         
