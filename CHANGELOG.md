@@ -1,0 +1,34 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- Favicon generator tool
+- Development documentation
+- Documentation maintenance automation
+
+### Changed
+- Updated caching strategy for better performance
+- Improved content security policy
+- Translated all documentation to English
+
+### Fixed
+- Apple Touch icon implementation
+- Service worker refresh functionality
+
+## [1.0.0] - 2025-05-14
+
+### Added
+- Initial website release
+- Basic portfolio structure
+- Contact information
+- Project showcase
+- Responsive design implementation
+
+[Unreleased]: https://github.com/azurepwq/azurepwq/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/azurepwq/azurepwq/releases/tag/v1.0.0 
