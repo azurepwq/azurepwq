@@ -27,7 +27,7 @@ JavaScript/TypeScript software engineer with interests in deep learning, AI secu
 - [Advanced Large Language Model Agents - MOOC, Spring 2025](https://llmagents-learning.org/sp25)
 - [A2A - An open protocol enabling communication and interoperability between opaque agentic applications](https://github.com/google/A2A)
 - [MCP - An open protocol that enables seamless integration between LLM applications and external data sources and tools](https://github.com/modelcontextprotocol)
-- [区块链技术与应用 - 肖臻老师 2018](http://zhenxiao.com/blockchain/)
+- [区块链技术与应用](http://zhenxiao.com/blockchain/)
 
 
 ## Connect With Me
