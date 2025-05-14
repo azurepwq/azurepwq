@@ -34,6 +34,10 @@ defaults:
       path: "404.html"
     values:
       permalink: /404.html
+  - scope:
+      path: "index.html"
+    values:
+      permalink: /  # Explicitly set root index.html permalink
 
 # Asset versioning
 asset_version: "1.0.1"
