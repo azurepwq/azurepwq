@@ -24,9 +24,8 @@ JavaScript/TypeScript software engineer with interests in deep learning, AI secu
 
 ## Learning & Exploring
 
-- LLM applications in software development workflows
-- Intersection of cryptography with blockchain systems
-- AI Security and Governance
+- [Large Language Model Agents - MOOC, Fall 2024](https://llmagents-learning.org/f24)
+- [Advanced Large Language Model Agents - MOOC, Spring 2025](https://llmagents-learning.org/sp25)
 
 ## Connect With Me
 
