@@ -1,0 +1,29 @@
+// Theme variables
+
+:root {
+  // Colors
+  --text-color: #24292e;
+  --bg-color: #fff;
+  --link-color: #4078c0;
+  --border-color: #e1e4e8;
+  --header-color: #0366d6;
+  
+  // Spacing
+  --spacing-unit: 1rem;
+  --content-width: 860px;
+  
+  // Typography
+  --base-font-size: 16px;
+  --base-line-height: 1.6;
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #c9d1d9;
+    --bg-color: #0d1117;
+    --link-color: #58a6ff;
+    --border-color: #30363d;
+    --header-color: #58a6ff;
+  }
+} 

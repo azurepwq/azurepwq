@@ -2,7 +2,6 @@
 layout: default
 title: azurepwq
 ---
-
 # Azure Pan
 
 ### Software Engineer · Writer

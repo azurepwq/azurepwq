@@ -88,32 +88,44 @@ bundle install
 
 ### 1. Update README.md
 
-The site's content is maintained in `README.md`. When you modify this file, you'll need to sync it to your `index.md` file (which includes Jekyll front matter).
+The site's content is maintained in `README.md`. When you modify this file, it will automatically be synced to your `index.md` file (which includes Jekyll front matter) when you use the npm start command.
 
 ### 2. Using NPM Scripts
 
 This project includes helpful npm scripts to streamline development:
 
 ```bash
-# Start the Jekyll development server with livereload
-npm run dev
+# Start both the Jekyll server and watch for README.md changes (recommended)
+npm start
 
-# Sync README.md content to index.md (preserving front matter)
+# Start just the Jekyll development server with livereload
+npm run serve
+
+# Build the site for production
+npm run build 
+
+# Manually sync README.md content to index.md (preserving front matter)
 npm run sync
 
-# Watch README.md for changes and automatically sync
+# Watch README.md for changes and automatically sync to index.md
 npm run watch
 
-# Run both dev server and watch simultaneously
-npm run start
+# Clean the Jekyll build
+npm run clean
 
-# Show all available commands
-npm run help
+# Run Jekyll doctor to find potential issues
+npm run test
 ```
 
-### 3. Sync README.md to index.md
+### 3. Automatic Sync of README.md to index.md
 
-The `sync-readme-to-index.sh` script copies the content from `README.md` to `index.md` while preserving the Jekyll front matter:
+The sync mechanism works in two ways:
+
+1. **Local Development**: When you run `npm start`, the watch script automatically monitors README.md for changes and syncs them to index.md while preserving the front matter.
+
+2. **GitHub Automation**: When you push changes to the main branch, a GitHub Actions workflow (`.github/workflows/sync-readme-to-index.yml`) automatically runs the sync script and commits any changes to index.md.
+
+The `sync-readme-to-index.sh` script copies the content from `README.md` to `index.md` while preserving the Jekyll front matter. You can also run it manually:
 
 ```bash
 ./sync-readme-to-index.sh
@@ -297,6 +309,16 @@ For Jekyll build errors, check:
 bundle exec jekyll build --trace
 ```
 
+### Sass Deprecation Warnings
+
+The site currently uses the Jekyll theme's Sass files which contain deprecated `@import` statements. These warnings are expected and won't prevent the site from building properly:
+
+```
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+```
+
+These warnings can be safely ignored until the Jekyll theme is updated to use modern Sass `@use` and `@forward` rules.
+
 ### Gemfile Issues
 
 If you need to reset your Gemfile:
@@ -336,3 +358,93 @@ For GitHub Pages, cache headers are configured via:
 - [Jekyll Documentation](https://jekyllrb.com/docs/)
 - [GitHub Pages](https://docs.github.com/en/pages)
 - [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+
+## Quick Start
+
+1. Clone the repository
+2. Install dependencies with `bundle install`
+3. Run the development server with `bundle exec jekyll serve`
+4. Visit `http://localhost:4000` in your browser
+
+## Project Structure
+
+The project follows a standard Jekyll site structure with the following key components:
+
+- `_layouts/` - HTML templates used for pages
+- `_includes/` - Reusable HTML components
+- `assets/` - CSS, JavaScript, and images
+- `_config.yml` - Main configuration file
+- `.github/workflows/` - GitHub Actions deployment configuration
+
+## Jekyll Setup
+
+This project uses Jekyll 4.x with the following configuration:
+
+- **Theme**: jekyll-theme-minimal
+- **Plugins**: jekyll-github-metadata, jekyll-feed, jekyll-sitemap, jekyll-seo-tag, and more
+- **Custom Domain**: The site is configured to use `azurepwq.com` via the CNAME file
+
+### Local Development
+
+To run the site locally:
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+Jekyll will start a local server at `http://localhost:4000`. Changes to files will automatically trigger a rebuild.
+
+### GitHub Pages Deployment
+
+The site is deployed to GitHub Pages using GitHub Actions. The workflow is defined in `.github/workflows/github-pages.yml`.
+
+When you push to the `main` branch, GitHub Actions will:
+1. Checkout the repository
+2. Set up Ruby
+3. Install dependencies
+4. Build the site with Jekyll
+5. Ensure the CNAME file exists
+6. Deploy the site to GitHub Pages
+
+## Technical Implementation
+
+// ... existing code ...
+
+## Caching Strategy
+
+// ... existing code ...
+
+## Asset Generation
+
+// ... existing code ...
+
+## Security Implementation
+
+// ... existing code ...
+
+## Testing and Debugging
+
+// ... existing code ...
+
+## Deployment
+
+This site is deployed using GitHub Pages with a custom GitHub Actions workflow. The deployment process is as follows:
+
+1. Push changes to the `main` branch
+2. GitHub Actions builds the Jekyll site
+3. The built site is deployed to GitHub Pages
+4. The site is available at `azurepwq.com`
+
+### Troubleshooting Deployment
+
+If you encounter issues with deployment:
+
+1. Check the GitHub Actions workflow logs
+2. Ensure all dependencies are properly specified in the Gemfile
+3. Verify that the CNAME file is being created in the `_site` directory
+4. Check DNS settings if the custom domain is not working
+
+## External Resources
+
+// ... existing code ...

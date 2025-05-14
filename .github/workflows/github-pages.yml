@@ -20,23 +20,45 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4
+      
+      # Set up Ruby environment
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
-          bundler-cache: true
+          bundler-cache: true # Install and cache gems
+      
+      # Configure GitHub Pages
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+      
+      # Install dependencies and build the site
+      - name: Install dependencies
+        run: bundle install
+      
       - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        run: |
+          # Build the site ignoring Sass warnings
+          JEKYLL_ENV=production SASS_DEPRECATION_WARNINGS=false bundle exec jekyll build
         env:
           JEKYLL_ENV: production
-          PAGES_REPO_NWO: azurepwq/azurepwq
+      
+      # Ensure CNAME file exists for custom domain
+      - name: Ensure CNAME File Exists
+        run: |
+          if [ ! -f "_site/CNAME" ]; then
+            echo "azurepwq.com" > _site/CNAME
+          fi
+      
+      # Upload the built site for deployment
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
 
   deploy:
     environment:

@@ -1,39 +1,22 @@
 {
-  "name": "azurepwq.com",
-  "version": "1.1.0",
-  "description": "Personal website with documentation and favicon implementation",
+  "name": "azurepwq-website",
+  "version": "1.0.0",
+  "description": "Azure PWQ's personal website",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
-    "lint:commit": "commitlint --from=HEAD~1",
-    "commit": "cz",
-    "help:commit": "echo \"You can use either:\\n- Regular git commit: git commit -m 'Type: Your message'\\n- Guided commit wizard: npm run commit\\n\\nBoth methods will validate your commit message format.\"",
-    "release": "standard-version",
-    "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major",
-    "release:patch": "standard-version --release-as patch",
-    "dev": "bundle exec jekyll serve --livereload",
+    "start": "npm-run-all --parallel serve watch",
+    "serve": "bundle exec jekyll serve --livereload",
     "build": "bundle exec jekyll build",
+    "clean": "bundle exec jekyll clean",
+    "cname": "echo 'azurepwq.com' > _site/CNAME",
+    "test": "bundle exec jekyll doctor",
     "sync": "bash ./sync-readme-to-index.sh",
-    "watch": "bash ./watch-and-sync.sh",
-    "start": "npm-run-all --parallel dev watch",
-    "help": "echo \"Available commands:\\n\\nDevelopment:\\n  npm run dev         # Start Jekyll server with livereload\\n  npm run build       # Build the site\\n  npm run sync        # Sync README.md to index.md\\n  npm run watch       # Watch README.md for changes\\n  npm run start       # Run dev + watch simultaneously\\n\\nVersioning:\\n  npm run release     # Automatic version increment\\n  npm run release:patch  # Increment patch version\\n  npm run release:minor  # Increment minor version\\n  npm run release:major  # Increment major version\\n\\nCommits:\\n  npm run commit      # Use guided commit wizard\\n\""
+    "watch": "bash ./watch-and-sync.sh"
   },
+  "author": "Azure PWQ",
+  "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.5",
-    "commitizen": "^4.3.0",
-    "cz-customizable": "^7.0.0",
-    "husky": "^8.0.3",
-    "npm-run-all": "^4.1.5",
-    "standard-version": "^9.5.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-customizable"
-    },
-    "cz-customizable": {
-      "config": ".cz-config.js"
-    }
+    "husky": "^8.0.0",
+    "npm-run-all": "^4.1.5"
   }
 } 

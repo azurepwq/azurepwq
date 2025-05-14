@@ -1,15 +1,26 @@
 # Site configuration
-theme: jekyll-theme-minimal
-markdown: kramdown
-sass:
-  style: compressed
 title: Azure PWQ
 description: Developer | Problem Solver | Web Enthusiast
 url: https://azurepwq.com
+baseurl: ""
 author: Azure PWQ
 timezone: Asia/Shanghai
 repository: "azurepwq/azurepwq"
+
+# Build settings
+# Removed theme reference to use custom styles
+markdown: kramdown
+sass:
+  style: compressed
+
+# GitHub Pages settings
 github: [metadata]
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
 
 # Asset versioning (increment this when making significant changes)
 asset_version: "1.0.1"
@@ -33,3 +44,4 @@ google_analytics: # Optional
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-github-metadata
