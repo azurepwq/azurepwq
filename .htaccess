@@ -11,26 +11,6 @@
 # Define the error document for 404 errors
 ErrorDocument 404 /404.html
 
-# Redirect /index and /index.html to display 404 content
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Handle /index exactly
-    RewriteRule ^index$ /index-404.html [R=404,L]
-    
-    # Handle /index.html exactly
-    RewriteRule ^index\.html$ /index-404.html [R=404,L]
-    
-    # If the path starts with /index/ and is not /index/ or /index/index.html
-    RewriteCond %{REQUEST_URI} ^/index/(.+)$
-    RewriteCond %{REQUEST_URI} !^/index/$
-    RewriteCond %{REQUEST_URI} !^/index/index\.html$
-    RewriteCond %{REQUEST_URI} !^/index/404\.html$
-    
-    # Send to 404 page
-    RewriteRule .* /index/404.html [R=404,L]
-</IfModule>
-
 # Cache control
 <IfModule mod_expires.c>
     ExpiresActive On

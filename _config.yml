@@ -34,19 +34,6 @@ defaults:
       path: "404.html"
     values:
       permalink: /404.html
-  - scope:
-      path: "index-404.html"
-    values:
-      permalink: /index-404.html
-  - scope:
-      path: "index/index.html"
-    values:
-      permalink: /index/
-  - scope:
-      path: "index.md"
-    values:
-      permalink: /
-      layout: "default"
 
 # Asset versioning
 asset_version: "1.0.1"
