@@ -56,4 +56,8 @@ node_modules/
 package-lock.json
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log* 
+yarn-error.log*
+
+# Automatically generated files
+index.md
+index.md.bak 
