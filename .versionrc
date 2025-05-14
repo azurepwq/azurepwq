@@ -1,0 +1,26 @@
+{
+  "types": [
+    {"type": "Add", "section": "Features"},
+    {"type": "Fix", "section": "Bug Fixes"},
+    {"type": "Update", "section": "Updates"},
+    {"type": "Refactor", "section": "Code Refactoring"},
+    {"type": "Docs", "section": "Documentation"},
+    {"type": "Style", "section": "Styles"},
+    {"type": "Test", "section": "Tests"},
+    {"type": "Build", "section": "Build System"},
+    {"type": "CI", "section": "Continuous Integration"},
+    {"type": "Chore", "section": "Chores"}
+  ],
+  "bumpFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    }
+  ],
+  "packageFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    }
+  ]
+} 

@@ -1,4 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-exec < /dev/tty && npx cz --hook || true 
+# Interactive commit message generation is OPTIONAL, not mandatory
+# Only use commitizen if explicitly requested with --commit
+if [ "$2" = "--commit" ]; then
+  exec < /dev/tty && npx cz --hook || true
+fi 

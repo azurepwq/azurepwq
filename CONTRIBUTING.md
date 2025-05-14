@@ -68,6 +68,29 @@ We provide helpful tools to assist with creating properly formatted commits:
 
 Both methods will validate your commit message format against our standards.
 
+#### Automatic Versioning
+
+This project uses automatic versioning based on conventional commits:
+
+1. **Automatic Release**:
+   ```
+   npm run release
+   ```
+   This will automatically increment the version based on commit types (Add = minor, Fix = patch).
+
+2. **Specific Version Bumps**:
+   ```
+   npm run release:patch  # 1.1.0 -> 1.1.1
+   npm run release:minor  # 1.1.0 -> 1.2.0
+   npm run release:major  # 1.1.0 -> 2.0.0
+   ```
+
+Running these commands will:
+- Update the version in package.json
+- Update CHANGELOG.md with all commits since the last version
+- Create a new git tag for the version
+- Create a new commit with the version changes
+
 ## Testing Before Submission
 
 Before submitting changes:

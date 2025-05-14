@@ -1,5 +1,5 @@
 {
-  "name": "azurepwq.github.io",
+  "name": "azurepwq.com",
   "version": "1.1.0",
   "description": "Personal website with documentation and favicon implementation",
   "private": true,
@@ -7,14 +7,19 @@
     "prepare": "husky install",
     "lint:commit": "commitlint --from=HEAD~1",
     "commit": "cz",
-    "help:commit": "echo \"You can use either:\\n- Regular git commit: git commit -m 'Type: Your message'\\n- Guided commit wizard: npm run commit\\n\\nBoth methods will validate your commit message format.\""
+    "help:commit": "echo \"You can use either:\\n- Regular git commit: git commit -m 'Type: Your message'\\n- Guided commit wizard: npm run commit\\n\\nBoth methods will validate your commit message format.\"",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:patch": "standard-version --release-as patch"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
     "commitizen": "^4.3.0",
     "cz-customizable": "^7.0.0",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "standard-version": "^9.5.0"
   },
   "config": {
     "commitizen": {

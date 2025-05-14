@@ -1,10 +1,13 @@
 # Site configuration
-theme: null
+theme: jekyll-theme-minimal
 markdown: kramdown
 sass:
   style: compressed
-title: "azurepwq"
-description: "Azure Pan (azurepwq) - JavaScript/TypeScript software engineer with interests in deep learning, AI security, and blockchain technology"
+title: Azure PWQ
+description: Developer | Problem Solver | Web Enthusiast
+url: https://azurepwq.com
+author: Azure PWQ
+timezone: Asia/Shanghai
 repository: "azurepwq/azurepwq"
 github: [metadata]
 
@@ -22,3 +25,11 @@ liquid:
   error_mode: strict
   strict_filters: true
   strict_variables: false
+
+# Optional Google Analytics
+google_analytics: # Optional
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed

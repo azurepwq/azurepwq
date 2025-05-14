@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Version updated! Don't forget to push tags:"
+echo "git push --follow-tags origin main" 
