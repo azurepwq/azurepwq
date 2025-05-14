@@ -198,57 +198,20 @@ Example HTML structure in README.md:
 </div>
 ```
 
-## Caching Strategy
+## Performance Optimizations
 
-The site uses a Service Worker for improved performance and offline capabilities:
+- **Asset Versioning**: Using version parameters on assets to enable better caching
+- **Font Optimization**: Font loading optimized with `font-display: swap`
+- **DNS Prefetching**: For frequently used external domains
+- **Preconnect**: Used for critical external resources
+- **Critical CSS**: Inlined in the head to prevent render blocking
+- **Media Attributes**: Used on non-critical CSS to defer loading
 
-### Service Worker Implementation
+## Known Issues and Limitations
 
-- Located in `service-worker.js` in the root directory
-- Provides caching for static assets and pages
-- Configured to allow updates to propagate on refresh
-
-### Testing Cache Behavior
-
-1. **Developer Tools**: Chrome DevTools > Application > Service Workers
-2. **Force Update**: Enable "Update on reload" to force fresh content
-3. **Unregister**: During development, you can unregister the Service Worker to prevent caching
-
-### Development Mode
-
-During development, you may want to:
-```javascript
-// In service-worker.js
-self.addEventListener('install', (event) => {
-  // Force activation without waiting for tabs to close
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', (event) => {
-  // Claim clients immediately
-  event.waitUntil(clients.claim());
-});
-```
-
-## Icon Generation
-
-The site includes tools for generating various icons and assets:
-
-### Favicon Generator
-
-Use `favicon-generator.html` to create favicon files:
-
-1. Open `favicon-generator.html` in your browser
-2. Upload or create your desired icon
-3. Customize colors and settings
-4. Generate and download the icon files
-5. Place files in the appropriate locations in the project
-
-### Using Generated Icons
-
-- `favicon.ico` goes in the root directory
-- `apple-touch-icon.png` goes in the root directory
-- Other size variations should be placed as specified in `_layouts/default.html`
+- When updating the README.md directly on GitHub, there may be a delay before changes appear on the website
+- The Jekyll live reload system sometimes fails with high CPU usage; restart the server if this happens
+- On first load in development, styles might flash unstyled - this is normal and only affects development
 
 ## Deployment
 
@@ -349,11 +312,9 @@ Example:
 
 For GitHub Pages, cache headers are configured via:
 - `_headers` file (if using Netlify)
-- Service Worker cache settings
 
 ## External Resources
 
-- [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 - [Favicon Generator](https://realfavicongenerator.net/)
 - [Jekyll Documentation](https://jekyllrb.com/docs/)
 - [GitHub Pages](https://docs.github.com/en/pages)
@@ -407,25 +368,51 @@ When you push to the `main` branch, GitHub Actions will:
 5. Ensure the CNAME file exists
 6. Deploy the site to GitHub Pages
 
-## Technical Implementation
+## Icon Generation
 
-// ... existing code ...
+The site includes tools for generating various icons and assets:
 
-## Caching Strategy
+### Favicon Generator
 
-// ... existing code ...
+Use `favicon-generator.html` to create favicon files:
 
-## Asset Generation
+1. Open `favicon-generator.html` in your browser
+2. Upload or create your desired icon
+3. Customize colors and settings
+4. Generate and download the icon files
+5. Place files in the appropriate locations in the project
 
-// ... existing code ...
+### Using Generated Icons
+
+- `favicon.ico` goes in the root directory
+- `apple-touch-icon.png` goes in the root directory
+- Other size variations should be placed as specified in `_layouts/default.html`
 
 ## Security Implementation
 
-// ... existing code ...
+The site implements several security best practices to protect users and content:
 
-## Testing and Debugging
+### Content Security Policy (CSP)
 
-// ... existing code ...
+The site uses a Content Security Policy to restrict resource loading:
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline';">
+```
+
+This policy:
+- Allows scripts only from the same origin
+- Allows images from the same origin and CDNs
+- Allows inline styles (needed for critical CSS)
+
+### HTTP Headers
+
+Additional security headers are set in `_layouts/default.html`:
+
+```html
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+```
 
 ## Deployment
 
@@ -444,10 +431,6 @@ If you encounter issues with deployment:
 2. Ensure all dependencies are properly specified in the Gemfile
 3. Verify that the CNAME file is being created in the `_site` directory
 4. Check DNS settings if the custom domain is not working
-
-## External Resources
-
-// ... existing code ...
 
 ## LiveReload Troubleshooting
 

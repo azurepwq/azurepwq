@@ -38,14 +38,6 @@ echo ""
 
 # Check code and documentation consistency
 echo "=== Checking Code and Documentation Consistency ==="
-if [ -f "service-worker.js" ] && [ -f "DEVELOPMENT.md" ]; then
-  if grep -q "Service Worker" "DEVELOPMENT.md" && grep -q "Caching Strategy" "DEVELOPMENT.md"; then
-    echo "✅ DEVELOPMENT.md contains information about Service Worker"
-  else
-    echo "⚠️ Warning: DEVELOPMENT.md may be missing information about Service Worker"
-  fi
-fi
-
 if [ -f "favicon-generator.html" ] && [ -f "DEVELOPMENT.md" ]; then
   if grep -q "favicon" "DEVELOPMENT.md" || grep -q "Icon Generation" "DEVELOPMENT.md"; then
     echo "✅ DEVELOPMENT.md contains information about icon generation"
