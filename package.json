@@ -1,7 +1,7 @@
 {
   "name": "azurepwq-website",
   "version": "1.0.0",
-  "description": "Azure PWQ's personal website",
+  "description": "azurepwq's personal website",
   "private": true,
   "scripts": {
     "start": "npm-run-all --parallel serve watch",
@@ -13,7 +13,7 @@
     "sync": "bash ./sync-readme-to-index.sh",
     "watch": "bash ./watch-and-sync.sh"
   },
-  "author": "Azure PWQ",
+  "author": "azurepwq",
   "license": "MIT",
   "devDependencies": {
     "husky": "^8.0.0",

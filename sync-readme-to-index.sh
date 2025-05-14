@@ -21,7 +21,7 @@ if [ ! -f "$INDEX" ]; then
   cat > "$INDEX" << EOL
 ---
 layout: default
-title: Azure PWQ
+title: azurepwq
 ---
 
 EOL
