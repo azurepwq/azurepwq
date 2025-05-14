@@ -1,8 +1,26 @@
 ---
 layout: default
 title: 404 - Page Not Found
-permalink: /404.html
+permalink: /index/
 ---
+
+<meta name="robots" content="noindex">
+<meta http-equiv="status" content="404">
+
+<script>
+  // Set HTTP status code to 404
+  document.addEventListener('DOMContentLoaded', function() {
+    // For browsers that support it (this is a client-side trick)
+    if (Object.defineProperty && window.history) {
+      Object.defineProperty(document, 'title', {
+        get: function() {
+          return '404 - Page Not Found';
+        }
+      });
+      window.history.replaceState(null, '404 - Page Not Found', window.location.href);
+    }
+  });
+</script>
 
 <div class="error-page">
   <h1>404</h1>

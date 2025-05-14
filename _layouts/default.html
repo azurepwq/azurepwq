@@ -97,22 +97,6 @@
     </div>
   </footer>
   <script src="{% include asset_path.html path='/assets/js/version.js' %}"></script>
-  <!-- Commented out service worker scripts to fix 404 issues -->
-  <!-- <script src="{% include asset_path.html path='/assets/js/service-worker-register.js' %}"></script> -->
-  <!-- <script src="{% include asset_path.html path='/assets/js/offline.js' %}"></script> -->
-  
-  <!-- Unregister any existing service workers to prevent 404 issues -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for (let registration of registrations) {
-          registration.unregister().then(function() {
-            console.log('Service Worker unregistered successfully');
-          });
-        }
-      });
-    }
-  </script>
   
   <script>
     // Theme toggle functionality
