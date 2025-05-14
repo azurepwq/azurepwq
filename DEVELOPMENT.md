@@ -448,3 +448,45 @@ If you encounter issues with deployment:
 ## External Resources
 
 // ... existing code ...
+
+## LiveReload Troubleshooting
+
+The Jekyll development server includes LiveReload functionality that automatically refreshes your browser when files change. If you're experiencing issues with LiveReload, follow these steps:
+
+### Content Security Policy (CSP) Configuration
+
+The website uses Content Security Policy headers for security. LiveReload requires WebSocket connections to function properly, so the CSP headers need to allow connections to the LiveReload server:
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; ... connect-src 'self' ws://localhost:35729 wss://localhost:35729;">
+```
+
+The CSP header is defined in `_layouts/default.html`.
+
+### Testing LiveReload Connection
+
+1. Open the file `livereload-test.html` in your browser. This page includes a debug script that will show connection status.
+2. Check the browser console for connection messages.
+3. Look for the visual indicator in the bottom right of the page.
+4. Use the "Reconnect LiveReload" button to force a reconnection attempt.
+
+### Common Issues
+
+1. **Connection Refused**: Make sure Jekyll is running with LiveReload enabled (`--livereload`).
+2. **CSP Errors**: Check that the Content Security Policy includes the WebSocket endpoints.
+3. **HTTPS Sites**: If using HTTPS locally, LiveReload must use secure WebSockets (`wss://`).
+4. **Port Conflicts**: LiveReload uses port 35729 by default. Ensure this port is available.
+
+### Debugging Script
+
+A debugging script is available at `assets/js/livereload-debug.js`. Include it in any page to debug LiveReload connections:
+
+```html
+<script src="{% raw %}{% include asset_path.html path='/assets/js/livereload-debug.js' %}{% endraw %}"></script>
+```
+
+This script provides:
+- Real-time connection status
+- Connection events logging in the console
+- A visual indicator showing connection status
+- A reconnect button for manual reconnection attempts

@@ -1,0 +1,31 @@
+---
+layout: default
+title: LiveReload Test
+---
+
+<div class="livereload-test">
+  <h2>LiveReload Test Page</h2>
+  <p>This page is used to test if LiveReload is working correctly.</p>
+  <p>Current timestamp: <span id="timestamp">{{ site.time | date: '%Y-%m-%d %H:%M:%S' }}</span></p>
+  <p class="test-edit">Edit this line in the file to test LiveReload</p>
+  
+  <div class="info-box">
+    <h3>LiveReload Testing Instructions</h3>
+    <ol>
+      <li>Ensure the Jekyll server is running with <code>npm start</code></li>
+      <li>Open this page in your browser</li>
+      <li>Check the console for LiveReload connection messages</li>
+      <li>Edit this file and save it to test if the page automatically reloads</li>
+      <li>Use the connection status indicator in the bottom-right corner</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+  // Update the timestamp every second to see if changes are reloaded
+  setInterval(() => {
+    document.getElementById('timestamp').textContent = new Date().toISOString();
+  }, 1000);
+</script>
+
+<script src="{% include asset_path.html path='/assets/js/livereload-debug.js' %}"></script> 
