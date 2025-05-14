@@ -54,7 +54,7 @@ permalink: /404.html
   .home-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: white;
+    color: white !important;
     padding: 0.75rem 1.5rem;
     border-radius: 18px;
     text-decoration: none;
@@ -83,6 +83,7 @@ permalink: /404.html
   .button-text {
     position: relative;
     z-index: 2;
+    color: white !important;
   }
   
   .emoji {
@@ -101,7 +102,7 @@ permalink: /404.html
     transform: translateY(-2px) scale(1.03); 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     text-decoration: none;
-    color: white;
+    color: white !important;
   }
   
   .home-button:hover:before {
@@ -118,6 +119,13 @@ permalink: /404.html
   @media (prefers-color-scheme: dark) {
     .home-button {
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+      background-color: #E27A59;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .home-button:hover {
+      background-color: #F08C70;
+      border-color: rgba(255, 255, 255, 0.2);
     }
     
     .error-page h1 {
