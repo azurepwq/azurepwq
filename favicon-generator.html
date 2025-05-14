@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favicon Generator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin: 1rem 0;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #C25938;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+    button:hover {
+      background: #d86a49;
+    }
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .preview-item canvas {
+      margin-bottom: 0.5rem;
+    }
+    .preview-item p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
+    }
+    .download-all {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+    }
+    .instructions {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 2rem;
+      width: 100%;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    code {
+      background: #eee;
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Favicon Generator</h1>
+  <p>This tool will help you create all necessary favicon files for your website.</p>
+  
+  <div class="controls">
+    <label>
+      Background Color
+      <input type="color" id="bgColor" value="#C25938">
+    </label>
+    <label>
+      Text
+      <input type="text" id="text" value="AP" maxlength="2">
+    </label>
+    <label>
+      Text Color
+      <input type="color" id="textColor" value="#FFFFFF">
+    </label>
+    <button id="generate">Generate All Favicons</button>
+  </div>
+  
+  <h2>Preview</h2>
+  <div class="preview">
+    <div class="preview-item">
+      <canvas id="favicon16" width="16" height="16"></canvas>
+      <p><strong>favicon-16x16.png</strong></p>
+      <p>16×16 pixels</p>
+      <button class="download-btn" data-canvas="favicon16" data-filename="favicon-16x16.png">Download</button>
+    </div>
+    <div class="preview-item">
+      <canvas id="favicon32" width="32" height="32"></canvas>
+      <p><strong>favicon-32x32.png</strong></p>
+      <p>32×32 pixels</p>
+      <button class="download-btn" data-canvas="favicon32" data-filename="favicon-32x32.png">Download</button>
+    </div>
+    <div class="preview-item">
+      <canvas id="appleIcon" width="180" height="180"></canvas>
+      <p><strong>apple-touch-icon.png</strong></p>
+      <p>180×180 pixels</p>
+      <button class="download-btn" data-canvas="appleIcon" data-filename="apple-touch-icon.png">Download</button>
+    </div>
+    <div class="preview-item">
+      <canvas id="faviconIco" width="32" height="32"></canvas>
+      <p><strong>favicon.ico</strong></p>
+      <p>32×32 pixels</p>
+      <button class="download-btn" data-canvas="faviconIco" data-filename="favicon.ico">Download</button>
+    </div>
+  </div>
+  
+  <button id="downloadAll" class="download-all">Download All Files</button>
+  
+  <div class="instructions">
+    <h2>Instructions</h2>
+    <ol>
+      <li>Customize your favicon using the controls above</li>
+      <li>Click "Generate All Favicons" to preview all sizes</li>
+      <li>Download individual files or all at once</li>
+      <li>Place all files in your website's root directory</li>
+    </ol>
+    <p>Note: The <code>favicon.ico</code> download is actually a PNG file. For a true ICO file, you may need to convert it using an online converter if needed, but modern browsers support PNG favicons.</p>
+  </div>
+  
+  <script>
+    // Get canvas elements
+    const canvas16 = document.getElementById('favicon16');
+    const canvas32 = document.getElementById('favicon32');
+    const canvasApple = document.getElementById('appleIcon');
+    const canvasIco = document.getElementById('faviconIco');
+    
+    // Get contexts
+    const ctx16 = canvas16.getContext('2d');
+    const ctx32 = canvas32.getContext('2d');
+    const ctxApple = canvasApple.getContext('2d');
+    const ctxIco = canvasIco.getContext('2d');
+    
+    // Get controls
+    const bgColorInput = document.getElementById('bgColor');
+    const textInput = document.getElementById('text');
+    const textColorInput = document.getElementById('textColor');
+    const generateBtn = document.getElementById('generate');
+    const downloadAllBtn = document.getElementById('downloadAll');
+    const downloadBtns = document.querySelectorAll('.download-btn');
+    
+    // Initial generation
+    generateAllFavicons();
+    
+    // Generate button click handler
+    generateBtn.addEventListener('click', generateAllFavicons);
+    
+    // Download all button click handler
+    downloadAllBtn.addEventListener('click', downloadAllFavicons);
+    
+    // Individual download buttons
+    downloadBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const canvasId = this.getAttribute('data-canvas');
+        const filename = this.getAttribute('data-filename');
+        const canvas = document.getElementById(canvasId);
+        downloadCanvas(canvas, filename);
+      });
+    });
+    
+    function generateAllFavicons() {
+      const bgColor = bgColorInput.value;
+      const text = textInput.value;
+      const textColor = textColorInput.value;
+      
+      // Generate each favicon
+      drawFavicon(ctx16, 16, bgColor, text, textColor);
+      drawFavicon(ctx32, 32, bgColor, text, textColor);
+      drawFavicon(ctxApple, 180, bgColor, text, textColor);
+      drawFavicon(ctxIco, 32, bgColor, text, textColor);
+    }
+    
+    function drawFavicon(ctx, size, bgColor, text, textColor) {
+      // Clear canvas
+      ctx.clearRect(0, 0, size, size);
+      
+      // Draw background
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, size, size);
+      
+      // Draw text
+      ctx.fillStyle = textColor;
+      
+      // Scale the font size based on icon size
+      const fontSize = Math.floor(size * 0.6);
+      ctx.font = `bold ${fontSize}px system-ui, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, size / 2, size / 2);
+    }
+    
+    function downloadCanvas(canvas, filename) {
+      const link = document.createElement('a');
+      link.download = filename;
+      
+      // For favicon.ico, we still use PNG format as most modern browsers support it
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+    
+    function downloadAllFavicons() {
+      // Create a slight delay between downloads
+      setTimeout(() => downloadCanvas(canvas16, 'favicon-16x16.png'), 0);
+      setTimeout(() => downloadCanvas(canvas32, 'favicon-32x32.png'), 300);
+      setTimeout(() => downloadCanvas(canvasApple, 'apple-touch-icon.png'), 600);
+      setTimeout(() => downloadCanvas(canvasIco, 'favicon.ico'), 900);
+    }
+  </script>
+</body>
+</html> 

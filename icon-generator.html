@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Touch Icon Generator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin: 1rem 0;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #C25938;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #d86a49;
+    }
+    .preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Apple Touch Icon Generator</h1>
+  <div class="controls">
+    <label>
+      Background Color
+      <input type="color" id="bgColor" value="#C25938">
+    </label>
+    <label>
+      Text
+      <input type="text" id="text" value="AP" maxlength="2">
+    </label>
+    <label>
+      Text Color
+      <input type="color" id="textColor" value="#FFFFFF">
+    </label>
+    <button id="generate">Generate Icon</button>
+    <button id="download">Download Icon</button>
+  </div>
+  
+  <div class="preview">
+    <p>Preview (180x180px)</p>
+    <canvas id="iconCanvas" width="180" height="180"></canvas>
+  </div>
+  
+  <script>
+    const canvas = document.getElementById('iconCanvas');
+    const ctx = canvas.getContext('2d');
+    const bgColorInput = document.getElementById('bgColor');
+    const textInput = document.getElementById('text');
+    const textColorInput = document.getElementById('textColor');
+    const generateBtn = document.getElementById('generate');
+    const downloadBtn = document.getElementById('download');
+    
+    // Initial generation
+    generateIcon();
+    
+    // Generate button click handler
+    generateBtn.addEventListener('click', generateIcon);
+    
+    // Download button click handler
+    downloadBtn.addEventListener('click', downloadIcon);
+    
+    function generateIcon() {
+      const bgColor = bgColorInput.value;
+      const text = textInput.value;
+      const textColor = textColorInput.value;
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw background
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw text
+      ctx.fillStyle = textColor;
+      ctx.font = 'bold 80px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+    }
+    
+    function downloadIcon() {
+      const link = document.createElement('a');
+      link.download = 'apple-touch-icon.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html> 
