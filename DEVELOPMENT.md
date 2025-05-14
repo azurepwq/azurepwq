@@ -115,7 +115,42 @@ npm run clean
 
 # Run Jekyll doctor to find potential issues
 npm run test
+
+# Use the conventional commit wizard for semantic versioning
+npm run commit
 ```
+
+### 3. Conventional Commits
+
+This project uses conventional commits to maintain a clean commit history. When committing changes, it's recommended to use the commit script:
+
+```bash
+npm run commit
+```
+
+This will launch a wizard that helps you create properly formatted commit messages according to the conventional commits specification. The format is:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Where `type` can be:
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that do not affect the meaning of the code
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `perf`: A code change that improves performance
+- `test`: Adding missing tests or correcting existing tests
+- `build`: Changes that affect the build system or external dependencies
+- `ci`: Changes to our CI configuration files and scripts
+- `chore`: Other changes that do not modify src or test files
+
+You can also commit changes normally with `git commit`, but the commit hook will validate your message against the conventional commits specification.
 
 ### 3. Automatic Sync of README.md to index.md
 
