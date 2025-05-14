@@ -16,6 +16,16 @@ permalink: /404.html
   </div>
 </div>
 
+<script>
+  // Simple script to handle redirection from /index paths
+  (function() {
+    const path = window.location.pathname;
+    if (path.startsWith('/index/') || path === '/index') {
+      window.location.href = '/';
+    }
+  })();
+</script>
+
 <style>
   .error-page {
     text-align: center;

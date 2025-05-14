@@ -44,7 +44,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="{% include asset_path.html path='/manifest.json' %}">
+  <!-- <link rel="manifest" href="{% include asset_path.html path='/manifest.json' %}"> -->
   
   <title>{{ page.title | default: site.title }}</title>
   <link rel="stylesheet" href="{% include asset_path.html path='/assets/css/style.css' %}" media="print" onload="this.media='all'">
@@ -97,8 +97,23 @@
     </div>
   </footer>
   <script src="{% include asset_path.html path='/assets/js/version.js' %}"></script>
-  <script src="{% include asset_path.html path='/assets/js/service-worker-register.js' %}"></script>
-  <script src="{% include asset_path.html path='/assets/js/offline.js' %}"></script>
+  <!-- Commented out service worker scripts to fix 404 issues -->
+  <!-- <script src="{% include asset_path.html path='/assets/js/service-worker-register.js' %}"></script> -->
+  <!-- <script src="{% include asset_path.html path='/assets/js/offline.js' %}"></script> -->
+  
+  <!-- Unregister any existing service workers to prevent 404 issues -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+          registration.unregister().then(function() {
+            console.log('Service Worker unregistered successfully');
+          });
+        }
+      });
+    }
+  </script>
+  
   <script>
     // Theme toggle functionality
     (function() {

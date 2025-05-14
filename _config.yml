@@ -7,6 +7,9 @@ author: azurepwq
 timezone: Asia/Shanghai
 repository: "azurepwq/azurepwq"
 
+# URL configuration
+permalink: /:title/
+
 # Build settings
 markdown: kramdown
 sass:
@@ -33,9 +36,9 @@ asset_version: "1.0.1"
 
 # Cache control
 cache:
-  enabled: true
-  max_age: 3600        # 1 hour for most resources
-  s_maxage: 86400      # 1 day for CDN
+  enabled: false  # Disabled caching to avoid service worker issues
+  max_age: 3600   # 1 hour for most resources
+  s_maxage: 86400 # 1 day for CDN
 
 # Plugins
 plugins:
