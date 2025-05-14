@@ -5,16 +5,42 @@ on:
     branches: [main]
     paths:
       - 'README.md'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  trigger_sync:
+  sync_readme:
     runs-on: ubuntu-latest
     steps:
+      # Try to trigger the sync workflow first
       - name: Trigger README sync workflow
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: readme_changed 
+          event-type: readme_changed
+        continue-on-error: true
+        id: repo_dispatch
+        
+      # Fallback: If the dispatch fails or times out, perform the sync directly
+      - name: Checkout repository
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Run sync script
+        if: always()
+        run: |
+          chmod +x sync-readme-to-index.sh
+          ./sync-readme-to-index.sh
+      
+      - name: Commit and push if changed
+        if: always()
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add index.md
+          git diff --cached --quiet || git commit -m 'Sync README.md to index.md [auto]'
+          git push 

@@ -10,6 +10,9 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [readme_changed]
+  schedule:
+    # Run every 6 hours to ensure sync happens even if other triggers fail
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
