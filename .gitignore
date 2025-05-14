@@ -40,6 +40,8 @@ Thumbs.db
 # Temporary files
 tmp/
 .tmp/
+.watch.pid
+_tmp_change_marker
 
 # Generator outputs (add to Git once finalized)
 # favicon.ico
