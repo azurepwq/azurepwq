@@ -10,8 +10,8 @@
     "clean": "bundle exec jekyll clean",
     "cname": "echo 'azurepwq.com' > _site/CNAME",
     "test": "bundle exec jekyll doctor",
-    "sync": "bash ./sync-readme-to-index.sh",
-    "watch": "bash ./watch-and-sync.sh",
+    "sync": "bash ./scripts/sync-readme-to-index.sh",
+    "watch": "bash ./scripts/watch-and-sync.sh",
     "commit": "npx git-cz"
   },
   "author": "azurepwq",

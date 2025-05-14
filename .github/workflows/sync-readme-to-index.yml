@@ -6,7 +6,7 @@ on:
     paths:
       - 'README.md'
       - '.github/workflows/sync-readme-to-index.yml'
-      - 'sync-readme-to-index.sh'
+      - 'scripts/sync-readme-to-index.sh'
   workflow_dispatch:
   repository_dispatch:
     types: [readme_changed]
@@ -27,8 +27,8 @@ jobs:
       
       - name: Run sync script
         run: |
-          chmod +x sync-readme-to-index.sh
-          ./sync-readme-to-index.sh
+          chmod +x scripts/sync-readme-to-index.sh
+          ./scripts/sync-readme-to-index.sh
       
       - name: Commit and push if changed
         run: |

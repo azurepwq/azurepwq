@@ -33,8 +33,8 @@ jobs:
       - name: Run sync script
         if: always()
         run: |
-          chmod +x sync-readme-to-index.sh
-          ./sync-readme-to-index.sh
+          chmod +x scripts/sync-readme-to-index.sh
+          ./scripts/sync-readme-to-index.sh
       
       - name: Commit and push if changed
         if: always()
