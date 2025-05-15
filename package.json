@@ -12,7 +12,8 @@
     "test": "bundle exec jekyll doctor",
     "sync": "bash ./scripts/sync-readme-to-index.sh",
     "watch": "nodemon --watch README.md --exec \"npm run sync\" --ext md",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "kill": "pkill -f jekyll"
   },
   "author": "azurepwq",
   "license": "MIT",

@@ -24,14 +24,20 @@ Software engineer with interests in deep learning, AI security, and blockchain t
 
 ## Learning & Exploring
 
-- [A2A - Apr 2025](https://github.com/google/A2A), An open protocol enabling communication and interoperability between opaque agentic applications
-- [Advanced Large Language Model Agents - MOOC, Spring 2025](https://llmagents-learning.org/sp25), Prof. Dawn Song, [RDI](https://rdi.berkeley.edu/), UC Berkeley
-- [MCP - Nov 2024](https://github.com/modelcontextprotocol), An open protocol that enables seamless integration between LLM applications and external data sources and tools
-- [Large Language Model Agents -  MOOC, Fall 2024](https://llmagents-learning.org/f24), Prof. Dawn Song, [RDI](https://rdi.berkeley.edu/), UC Berkeley
-- [Zero Knowledge Proofs - MOOC, Spring 2023](https://rdi.berkeley.edu/zk-learning)
-- [Decentralized Finance - MOOC, Fall 2022](https://defi-learning.org/f22)
-- [Blockchain and its Applications - Open course, 2018](http://zhenxiao.com/blockchain/), Prof. Zhen Xiao, [Peking University](http://www.pku.edu.cn/)
+- [**A2A** - Apr 2025](https://github.com/google/A2A), An open protocol enabling communication and interoperability between opaque agentic applications
+- [**Advanced Large Language Model Agents** - MOOC, Spring 2025](https://llmagents-learning.org/sp25), Prof. Dawn Song, [RDI](https://rdi.berkeley.edu/), UC Berkeley
+- [**MCP** - Nov 2024](https://github.com/modelcontextprotocol), An open protocol that enables seamless integration between LLM applications and external data sources and tools
+- [**Large Language Model Agents** - MOOC, Fall 2024](https://llmagents-learning.org/f24), Prof. Dawn Song, [RDI](https://rdi.berkeley.edu/), UC Berkeley
+- [**Zero Knowledge Proofs** - MOOC, Spring 2023](https://rdi.berkeley.edu/zk-learning)
+- [**Decentralized Finance** - MOOC, Fall 2022](https://defi-learning.org/f22)
+- [**Blockchain and its Applications** - Open course, 2018](http://zhenxiao.com/blockchain/), Prof. Zhen Xiao, [Peking University](http://www.pku.edu.cn/)
 
+## Archive
+- Algorithms
+  - [Data Structures and Algorithms Specialization](https://www.coursera.org/programs/sobma/specializations/data-structures-algorithms), Coursera
+  - [Advanced Algorithms](https://www.coursera.org/programs/sobma/specializations/boulder-data-structures-algorithms), Coursera
+- Psychology
+  - [Psychology and the Good Life](https://www.coursera.org/learn/xin-li-xue-sheng-huo),  [Certificate](https://coursera.org/share/72e011fa1a5e83dda43845107ba75f7c)
 
 ## Connect With Me
 
