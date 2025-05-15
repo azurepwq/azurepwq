@@ -88,7 +88,7 @@ bundle install
 
 ### 1. Update README.md
 
-The site's content is maintained in `README.md`. When you modify this file, it will automatically be synced to your `index.md` file (which includes Jekyll front matter) when you use the npm start command.
+The site's content is maintained in `README.md`. When you modify this file, it will automatically be synced to your `_pages/home.md` file (which includes Jekyll front matter) when you use the npm start command.
 
 ### 2. Using NPM Scripts
 
@@ -104,10 +104,10 @@ npm run serve
 # Build the site for production
 npm run build 
 
-# Manually sync README.md content to index.md (preserving front matter)
+# Manually sync README.md content to _pages/home.md (preserving front matter)
 npm run sync
 
-# Watch README.md for changes and automatically sync to index.md
+# Watch README.md for changes and automatically sync to _pages/home.md
 npm run watch
 
 # Clean the Jekyll build
@@ -152,26 +152,26 @@ Where `type` can be:
 
 You can also commit changes normally with `git commit`, but the commit hook will validate your message against the conventional commits specification.
 
-### 3. Automatic Sync of README.md to index.md
+### 4. Automatic Sync of README.md to _pages/home.md
 
 The sync mechanism works in two ways:
 
-1. **Local Development**: When you run `npm start`, the watch script automatically monitors README.md for changes and syncs them to index.md while preserving the front matter.
+1. **Local Development**: When you run `npm start`, the watch script automatically monitors README.md for changes and syncs them to `_pages/home.md` while preserving the front matter.
 
-2. **GitHub Automation**: When you push changes to the main branch, a GitHub Actions workflow (`.github/workflows/sync-readme-to-index.yml`) automatically runs the sync script and commits any changes to index.md.
+2. **GitHub Automation**: When you push changes to the main branch, a GitHub Actions workflow (`.github/workflows/sync-readme-to-index.yml`) automatically runs the sync script and commits any changes to `_pages/home.md`.
 
-The `sync-readme-to-index.sh` script copies the content from `README.md` to `index.md` while preserving the Jekyll front matter. You can also run it manually:
+The `sync-readme-to-index.sh` script copies the content from `README.md` to `_pages/home.md` while preserving the Jekyll front matter. You can also run it manually:
 
 ```bash
-./sync-readme-to-index.sh
+./scripts/sync-readme-to-index.sh
 ```
 
 Make this script executable if it's not already:
 ```bash
-chmod +x sync-readme-to-index.sh
+chmod +x scripts/sync-readme-to-index.sh
 ```
 
-### 4. Start the Jekyll Server
+### 5. Start the Jekyll Server
 
 ```bash
 bundle exec jekyll serve --livereload
@@ -179,7 +179,7 @@ bundle exec jekyll serve --livereload
 
 This will start a local server at http://localhost:4000 with live reload enabled.
 
-### 5. Watch for README Changes (Optional)
+### 6. Watch for README Changes (Optional)
 
 For automatic syncing when you edit README.md, use the watch script in a separate terminal:
 
@@ -191,7 +191,8 @@ chmod +x watch-and-sync.sh
 ## File Structure
 
 - **README.md**: Main content (used for GitHub profile)
-- **index.md**: Jekyll page with front matter (generated from README.md)
+- **_pages/home.md**: Jekyll page with front matter for the homepage (generated from README.md)
+- **_pages/404.html**: Custom 404 error page
 - **_layouts/**: Contains HTML layouts
 - **assets/css/**: Contains stylesheets
 - **_config.yml**: Jekyll configuration
@@ -252,7 +253,7 @@ Example HTML structure in README.md:
 
 Changes are automatically deployed when pushed to the main branch. GitHub Actions will:
 
-1. Sync README.md to index.md via `.github/workflows/sync-readme-to-index.yml`
+1. Sync README.md to _pages/home.md via `.github/workflows/sync-readme-to-index.yml`
 2. Build and deploy the site via GitHub Pages
 
 ## International Accessibility
