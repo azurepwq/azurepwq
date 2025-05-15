@@ -19,11 +19,13 @@ Software engineer with interests in deep learning, AI security, and blockchain t
 
 ## Learning & Exploring
 
-- [Large Language Model Agents - MOOC, Fall 2024](https://llmagents-learning.org/f24)
-- [Advanced Large Language Model Agents - MOOC, Spring 2025](https://llmagents-learning.org/sp25)
-- [A2A - An open protocol enabling communication and interoperability between opaque agentic applications](https://github.com/google/A2A)
-- [MCP - An open protocol that enables seamless integration between LLM applications and external data sources and tools](https://github.com/modelcontextprotocol)
-- [区块链技术与应用](http://zhenxiao.com/blockchain/)
+- [A2A - Apr 2025](https://github.com/google/A2A), An open protocol enabling communication and interoperability between opaque agentic applications
+- [Advanced Large Language Model Agents - MOOC, Spring 2025](https://llmagents-learning.org/sp25), Prof. Dawn Song, [RDI](https://rdi.berkeley.edu/), UC Berkeley
+- [MCP - Nov 2024](https://github.com/modelcontextprotocol), An open protocol that enables seamless integration between LLM applications and external data sources and tools
+- [Large Language Model Agents -  MOOC, Fall 2024](https://llmagents-learning.org/f24), Prof. Dawn Song, [RDI](https://rdi.berkeley.edu/), UC Berkeley
+- [Zero Knowledge Proofs - MOOC, Spring 2023](https://rdi.berkeley.edu/zk-learning)
+- [Decentralized Finance - MOOC, Fall 2022](https://defi-learning.org/f22)
+- [Blockchain and its Applications - Open course, 2018](http://zhenxiao.com/blockchain/), Prof. Zhen Xiao, [Peking University](http://www.pku.edu.cn/)
 
 
 ## Connect With Me
