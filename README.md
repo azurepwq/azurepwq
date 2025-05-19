@@ -31,6 +31,8 @@ Software engineer with interests in deep learning, AI security, and blockchain t
 - Algorithms
   - [Data Structures and Algorithms Specialization](https://www.coursera.org/programs/sobma/specializations/data-structures-algorithms), Coursera
   - [Advanced Algorithms](https://www.coursera.org/programs/sobma/specializations/boulder-data-structures-algorithms), Coursera
+- Programming
+  - [Generative AI for Software Development Skill Certificate](https://www.coursera.org/programs/sobma/professional-certificates/generative-ai-for-software-development), [Certificate](https://coursera.org/share/56c293b6e5a10d82e5d3172bbfbc92cc)
 - Psychology
   - [Psychology and the Good Life](https://www.coursera.org/learn/xin-li-xue-sheng-huo),  [Certificate](https://coursera.org/share/72e011fa1a5e83dda43845107ba75f7c)
 
