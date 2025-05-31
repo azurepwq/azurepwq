@@ -25,6 +25,14 @@ jobs:
         with:
           fetch-depth: 0
       
+      # Pull latest changes BEFORE running the sync script
+      - name: Pull latest changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git pull
+      
+      # Now run the sync script on the latest code
       - name: Run sync script
         run: |
           chmod +x scripts/sync-readme-to-index.sh
@@ -32,9 +40,13 @@ jobs:
       
       - name: Commit and push if changed
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull --rebase origin main
+          # Add home.md file to staging
           git add _pages/home.md
-          git diff --cached --quiet || git commit -m 'Sync README.md to home page [auto]'
-          git push
+          
+          # Check if there are changes and commit them
+          if ! git diff --cached --quiet; then
+            git commit -m 'Sync README.md to home page [auto]'
+            git push
+          else
+            echo "No changes detected in home.md"
+          fi
