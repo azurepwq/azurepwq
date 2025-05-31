@@ -8,8 +8,6 @@ on:
       - '.github/workflows/sync-readme-to-index.yml'
       - 'scripts/sync-readme-to-index.sh'
   workflow_dispatch:
-  repository_dispatch:
-    types: [readme_changed]
   schedule:
     # Run every 6 hours to ensure sync happens even if other triggers fail
     - cron: '0 */6 * * *'
@@ -25,14 +23,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      # Pull latest changes BEFORE running the sync script
-      - name: Pull latest changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull
-      
-      # Now run the sync script on the latest code
       - name: Run sync script
         run: |
           chmod +x scripts/sync-readme-to-index.sh
@@ -40,11 +30,18 @@ jobs:
       
       - name: Commit and push if changed
         run: |
-          # Add home.md file to staging
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # First, stage all changes to prevent "unstaged changes" error
           git add _pages/home.md
           
-          # Check if there are changes and commit them
+          # Check if there are changes to commit
           if ! git diff --cached --quiet; then
+            # Pull latest changes to avoid conflicts
+            git pull origin main --no-rebase
+            
+            # Commit and push changes
             git commit -m 'Sync README.md to home page [auto]'
             git push
           else
